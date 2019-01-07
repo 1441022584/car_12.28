@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.car.mapper.ParamsBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.car.model.ParamsBean" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="codetype" property="codetype" jdbcType="VARCHAR" />
+    <result column="codeid" property="codeid" jdbcType="INTEGER" />
+  </resultMap>
+<!-- 查询买车参数-->
+  <select id="getBuyCarParam" resultType="com.jk.car.model.ParamsBean" parameterType="int" >
+    select * from t_params where codeid=#{id}
+  </select>
+</mapper>

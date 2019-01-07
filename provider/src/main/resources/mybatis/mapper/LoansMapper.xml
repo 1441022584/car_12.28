@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.car.mapper.LoansMapper" >
+
+    <!--新增 贷款人 void saveBorrwer(@Param("borrower")BorrowerBean borrower);-->
+     <insert id="saveBorrwer" parameterType="com.jk.car.model.BorrowerBean" >
+         INSERT into loans_borrower_status(phone,status_marriage,status_work,status_education,status_housing,apply_time)
+            values(#{phone},#{marriage},#{work},#{education},#{housing},#{applyTime})
+     </insert>
+
+</mapper>

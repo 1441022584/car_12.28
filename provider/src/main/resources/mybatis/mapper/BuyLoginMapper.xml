@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.car.mapper.BuyLoginMapper" >
+    <!--根据Id查询买车信息-->
+    <select id="queryPhoneById" parameterType="string" resultType="com.jk.car.model.UserBean">
+      select * from t_user where  phone = #{value}
+    </select>
+
+    <!--大数据往数据库新增-->
+    <insert id="addUserPhone" parameterType="com.jk.car.model.UserBean">
+        insert into t_user (username,phone,password,ifphoneconfirm,status)
+            values(#{username},#{phone},#{password},#{ifphoneconfirm},1)
+    </insert>
+
+	
+</mapper>

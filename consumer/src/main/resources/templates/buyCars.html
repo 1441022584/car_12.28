@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+    <script  type="text/javascript" src="../jslib/jquery-2.1.1.min.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+    <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.js"></script>
+    <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap-treeview/bootstrap-treeview.min.css"/>
+    <script src="../jslib/bootstrap/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootStrap-addTabs/bootstrap.addtabs.css"/>
+    <script src="../jslib/bootstrap/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap-table/bootstrap-table.css" />
+    <script src="../jslib/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<style>
+    #sglayout{
+        width:740px;
+        height: 580px;
+        margin-left: 240px;
+        margin-top: 60px;
+    }
+    .m-bottom span {
+        float: left;
+        width: 94px;
+        height: 42px;
+        line-height: 44px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 104px;
+        margin-top: 197px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .m-bottom span {
+        float: left;
+        width: 94px;
+        height: 42px;
+        line-height: 44px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 175px;
+        margin-top: 259px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .showImg{
+        float: left;
+        margin-left: -140px;
+        width:460px;
+        -webkit-transform:translateY(-11%);
+        /* border: 1px solid; */
+    }
+    .m-bottom {
+        margin-top: -213px;
+        overflow: hidden;
+    }
+    .btn span {
+        cursor: pointer;
+        display: block;
+        float: left;
+        width: 184px;
+        height: 45px;
+        line-height: 45px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 180px;
+        text-align: center;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -moz-background-clip: padding-box;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+    }
+    .m-bottom .btn .nowBuy {
+        border: 1px solid #fe7c04;
+        color: #fe7c04;
+        background: #FFE3D0;
+    }
+
+    #carType{
+        margin-left: 330px;
+        margin-bottom: -24px
+    }
+    #carPrice{
+        margin-left: 330px;
+        margin-top: -12px;
+    }
+    #module{
+        width: 300px;
+        height: 85px;
+        background: #FFFFFF;
+        margin-left: 330px;
+        margin-top: 26px;
+    }
+    .img {
+        margin-left: 330px;
+        margin-top: 30px;
+    }
+    #myCarousel {
+        margin: 50px 0 0 0;
+    }
+    .carousel-inner .item img {
+        margin: 0 auto;
+    }
+    .tp1{
+        background:#ECEDF1;
+    }
+    .tp2{
+        background:#88AED3;
+    }
+    .tp3{
+        background:#22AEE3;
+    }
+    #carousel{
+        margin-left: 100.2px;
+        margin-top: -22px;
+        transform:translateY(-60%);/**上移元素**/
+        -ms-transform:translateY(-60%);
+        -webkit-transform:translateY(-314%);
+    }
+    #nowBuy{
+        margin-left: 750px;
+        margin-top: 0px;
+        transform: translateY(-60%);
+        -ms-transform: translateY(-60%);
+        -webkit-transform: translateY(-440%);
+        width: 100px;
+    }
+
+    #buycarImg{
+        margin-left: 84px;
+        margin-top: -100px;
+        transform:translateY(-60%);/**上移元素**/
+        -ms-transform:translateY(-60%);
+        -webkit-transform:translateY(-0%);
+    }
+    #wangyao{
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    #buycar{
+        transform:translateY(-60%);/**上移元素**/
+        -ms-transform:translateY(-60%);
+        -webkit-transform:translateY(-364%);
+    }
+    body {
+        /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #e6e6fa;*/
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+<!-- 导航条 -->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="../jslib/img/20180912104325.jpg" width="50" height="50" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font>北京</font>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../toUser">  <font size="2">首页</font></a></li>
+            <li><a href="../toBuyCar">  <font size="2">我要买车</font></a></li>
+            <li><a href="../toSellCarPage">  <font size="2">我要卖车</font></a></li>
+            <li><a href="../toServicePage">  <font size="2">瓜子服务</font></a></li>
+            <li><a href="../toLoans">  <font size="2">瓜子金融</font></a></li>
+            <li><a href="../toSellCarPage">  <font size="2">毛豆新车</font></a></li>
+            <li> <a href="#"><font size="2">400-666-6666</font></a></li>
+            <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span><font size="2"> 登录</font></a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </ul>
+    </div>
+</nav>
+<div class="container-responsive" id="wangyao">
+    <div class="row clearfix">
+        <!-- 汽车id -->
+        <input type="hidden"  th:value="${id}" id="carId"/>
+        <input type="hidden"  th:value="${buyCarOne.carSeries}" />
+        <input type="hidden"  th:value="${buyCarOne.carRoadroller}" />
+        <input type="hidden"  th:value="${buyCarOne.carLicencesto}" />
+        <input type="hidden"  th:value="${buyCarOne.carVehiclecondition}" />
+        <input type="hidden"  th:value="${buyCarOne.carDemand}" />
+        <input type="hidden"  th:value="${buyCarOne.carDisplacement}" />
+        <input type="hidden"  th:value="${buyCarOne.carLicenseplatenumber}" />
+        <input type="hidden"  th:value="${buyCarOne.carSite}" />
+        <input type="hidden"  th:value="${buyCarOne.carParameter}" />
+        <input type="hidden"  th:value="${buyCarOne.carDetails}" />
+        <input type="hidden"  th:value="${buyCarOne.carTime}" />
+        <input type="hidden"  th:value="${buyCarOne.carage}" />
+        <input type="hidden"  th:value="${buyCarOne.mileage}" />
+        <input type="hidden"  th:value="${buyCarOne.carpart}" />
+        <input type="hidden"  th:value="${buyCarOne.carshift}" />
+        <input type="hidden"  th:value="${buyCarOne.carseat}" />
+        <input type="hidden"  th:value="${buyCarOne.carMonthString}" />
+        <!-- 商品名称 -->
+        <div id="sglayout">
+            <font  size="4px" ><div id="carType" th:text="${buyCarOne.cartype}"></div></font>
+            <div class="showImg">
+                <div id="myCarousel" class="carousel slide" style="width: 460px">                        <!--设置轮播器区域样式，设置轮播器滚动样式-->
+                    <ol class="carousel-indicators">                                <!--设置轮播器列表区域样式，就是小圆点区域样式-->
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>    <!--设置当前列表首选-->
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">                                    <!--设置轮播器图片区域-->
+                        <div class="item active tp1">                                <!--设置轮播器图片样式-->
+                            <a href="#"><img  th:src="${buyCarOne.carImg}" style="width: 460px;height: 400px" /></a>
+                        </div>
+                        <div class="item tp2">
+                            <a href="#"><img  th:src="${buyCarOne.carDetails}" style="width: 460px;height: 400px" /></a>
+                        </div>
+                        <div class="item tp3">
+                            <a href="#"><img  th:src="${buyCarOne.carImg}" style="width: 460px;height: 400px" /></a>
+                        </div>
+                    </div>
+                    <!--设置轮播器箭头区域-->
+                    <a href="#myCarousel"  data-slide="prev" class="carousel-control left">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a href="#myCarousel" data-slide="next" class="carousel-control right">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+            <div id="module">
+                <span th:text="${buyCarOne.carVehiclecondition}" ></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${buyCarOne.carYearString}" ></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span th:text="${buyCarOne.carSite}" ></span>
+                <br/>
+                <font  size="1px" color="#a9a9a9">车辆状况</font> |
+               <!-- <span th:text="${buyCarOne.carLicenseYear}" ></span>-->
+                <font  size="1px" color="#a9a9a9">上牌时间</font> |
+                <font  size="1px" color="#a9a9a9">验车地点</font> |
+            </div>
+
+            <div id="carPrice">
+                车主报价 ：
+                <font  size="4px" color="#ff7f50"><b><span th:text="${buyCarOne.carPrice}" ></span>万</b></font>
+            </div>
+            <div class="img">
+                <img id="imgId" src="../jslib/img/1.png" width="460px" height="200px"/>
+            </div>
+        </div>
+        <div id="nowBuy">
+            <button type="button" class="btn btn-primary glyphicon btn-lg" id="login2" >预约看车</button>
+        </div>
+        <span id="details" th:text="${carDetails}"></span>
+
+        <div id="buycar">
+            <center><font size="5"><b>车辆详情</b></font></center>
+        </div>
+        <div id="buycarImg">
+            <img src="../jslib/img/wangyao.png"/>
+        </div>
+        <!--短信登录弹框-->
+        <div class="modal fade" id="myModal2" role="dialog" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                        <form id="sellCarForm">
+                            <!--提交-->
+                            <div id="sub" style="display: block">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-7"><h4>手机登录后就可以帮您安排看车了哦</h4></div>
+                                        <div class="col-sm-2"></div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-sm-2">手机号</div>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="userphone"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-sm-2">验证码</div>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="carSite" id="buyCarPwd"/>
+                                        </div>
+                                        <div class="col-sm-2"><button type="button" id="code2" onclick="getCode()" class="btn btn-success">获取验证码</button></div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <center><font size="3px" color="#008b8b">免费咨询400-069-6530</font><br/>
+
+                                            登录即视为同意《用户使用协议》及《隐私权条款》</center>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="modal-footer">
+                            <center>
+                                <button type="button" class="btn btn-primary" style="display: block"  id="queren" >
+                                    登陆
+                                </button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--手机号短信登录弹框-->
+        <div class="modal fade" id="myModal" role="dialog" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                        <form id="sellCarForm1">
+                            <!--提交-->
+                            <div id="sub1" style="display: block">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-7"><h4>手机登录后就可以帮您安排看车了哦</h4></div>
+                                        <div class="col-sm-2"></div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-sm-2">手机号</div>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="buyCarphone2"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-sm-2">验证码</div>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="carSite" id="buyCarPwd2"/>
+                                        </div>
+                                        <div class="col-sm-2"><button type="button" id="code" onclick="getCode32()" class="btn btn-success">获取验证码</button></div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <center><font size="3px" color="#008b8b">免费咨询400-069-6530</font><br/>
+
+                                            登录即视为同意《用户使用协议》及《隐私权条款》</center>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="modal-footer">
+                            <center>
+                                <button type="button" class="btn btn-primary" style="display: block" id="queren2" >
+                                    登陆
+                                </button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+    //登录弹框
+    $("#login").click(function(){
+        $("#myModal2").modal("show");
+    })
+
+
+    //手机号预约弹框
+    $("#login2").click(function(){
+        $("#myModal").modal("show");
+    })
+    // 获取验证码
+    function getCode32(){
+
+        var  phone = $("#buyCarphone2").val();
+
+        if(phone == '' || phone == null){
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return ;
+        }
+        document.getElementById("code").disabled = true;
+        $.ajax({
+            url: '../getCode',
+            type: 'post',
+            data: {
+                phone_number: phone
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    }
+
+    //手机号预约弹框
+    $("#queren2").click(function(){
+
+        var pwd=$("#buyCarPwd2").val();
+        var buyCarphone2=$("#buyCarphone2").val();
+
+            if (!buyCarphone2) {
+                bootbox.alert({
+                    size: "small",
+                    title: "提示",
+                    message: "请输入手机号!",
+                });
+                return
+            }
+            if (!pwd) {
+                bootbox.alert({
+                    size: "small",
+                    title: "提示",
+                    message: "请输入验证码!",
+                });
+                return
+            }
+            // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+            $.ajax({
+                url: '../buylogin',
+                type: 'post',
+                data: {
+                    login_code: pwd,
+                    phone:buyCarphone2
+
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.code==0) {
+                        // alert(data)
+                        $("#myModal").modal('hide');
+                        openMakeCarDialog();
+                    }else {
+                        alert("登录失败，请重新登录！！！")
+                    }
+
+                }
+            })
+    })
+    // 获取验证码
+    function getCode(){
+
+        var  phone = $("#userphone").val();
+
+        if(phone == '' || phone == null){
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return ;
+        }
+        document.getElementById("code2").disabled = true;
+        $.ajax({
+            url: '../getCode',
+            type: 'post',
+            data: {
+                phone_number: phone
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    }
+    //d导航蓝登录
+    $("#queren").click(function(){
+
+        var pwd=$("#buyCarPwd").val();
+        var buyCarphone2=$("#userphone").val();
+
+        if (!buyCarphone2) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return
+        }
+        if (!pwd) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入验证码!",
+            });
+            return
+        }
+        // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+        $.ajax({
+            url: '../buylogin',
+            type: 'post',
+            data: {
+                login_code: pwd,
+                phone:buyCarphone2
+
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.code==0) {
+                    // alert(data)
+                    $("#myModal").modal('hide');
+
+                }else {
+                    alert("登录失败，请重新登录！！！")
+                }
+
+            }
+        })
+    })
+
+    //新增-------------------------------
+    var res;
+    function createAddContent(url) {
+        $.ajax({
+            url : url,
+            async : false,
+            success : function(data) {
+                res = data;
+            }
+        });
+        return res;
+    }
+    function openMakeCarDialog() {
+        var id=$("#carId").val();
+        //alert(id)
+        bootbox.dialog({
+            size : "big",
+            title : '<font size="5">预约看车</font>',
+            message : createAddContent("../toModalMake"),
+            closeButton : true,
+            //className:'add-dialog',
+            buttons : {
+                'success' : {
+                    "label" : "<i></i> 立即预约",
+                    "className" : "btn-sm btn-success",
+                    "callback" : function() {
+                        $.ajax({
+                            url : '../addBuyCarStatus',
+                            type : 'post',
+                            data : $("#formUser").serialize(),
+                            dataType:'text',
+                            success : function(data) {
+                                bootbox.alert({
+                                    size: "small",
+                                    title: "提示",
+                                    message: "预约成功!",
+                                });
+                                location.href="../toBuyCar"
+                            }
+                        })
+                    }
+                }
+            }
+        })
+        $.ajax({
+            url:'../getBuyCarListById?id='+id,
+            type:'post',
+            dataType:'json',
+            success:function (data) {
+                //alert(data)
+                $("input[name='id']").val(data.id);
+                $("input[name='carSite']").val(data.carSite);
+                $("input[name='cartype']").val(data.cartype);
+                $("input[name='carStatus']").val(data.carStatus);
+                $("input[name='carMonthString']").val(data.carMonthString);
+                $("input[name='carseat']").val(data.carseat);
+                $("input[name='carshift']").val(data.carshift);
+                $("input[name='carpart']").val(data.carpart);
+                $("input[name='mileage']").val(data.mileage);
+                $("input[name='carage']").val(data.carage);
+                $("input[name='carTime']").val(data.carTime);
+                $("input[name='carDetails']").val(data.carDetails);
+                $("input[name='carParameter']").val(data.carParameter);
+                $("input[name='carSite']").val(data.carSite);
+                $("input[name='carLicenseplatenumber']").val(data.carLicenseplatenumber);
+                $("input[name='carDisplacement']").val(data.carDisplacement);
+                $("input[name='carVehiclecondition']").val(data.carVehiclecondition);
+                $("input[name='carLicencesto']").val(data.carLicencesto);
+                $("input[name='carRoadroller']").val(data.carRoadroller);
+                $("input[name='carSeries']").val(data.carSeries);
+            }
+        })
+    }
+    /**
+     * 轮播js
+     */
+    $(function () {
+        $('#myCarousel').carousel({
+            //设置自动播放/3 秒
+            interval: 3000,
+        });
+    });
+</script>
+</html>

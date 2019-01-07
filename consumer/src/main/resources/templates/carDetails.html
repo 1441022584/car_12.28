@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="../jslib/jquery-2.1.1.min.js"></script>
+
+    <script src="../jslib/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+    <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.css">
+
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap-table/bootstrap-table.css">
+    <script src="../jslib/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+</head>
+<style>
+    #sglayout{
+             width:740px;
+             height: 600px;
+             margin-left: 240px;
+             margin-top: 60px;
+         }
+    .m-bottom span {
+        float: left;
+        width: 94px;
+        height: 42px;
+        line-height: 44px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 104px;
+        margin-top: 197px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .nowBuy {
+        border: 0px  #fe7c04;
+        color:#ffffff;
+        background: #00cc99;
+    }
+    .m-bottom span {
+        float: left;
+        width: 81px;
+        height: 42px;
+        line-height: 44px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 185px;
+        margin-top: 260px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .nowBuy2 {
+        border: 0px  #fe7c04;
+        color:#ffffff;
+        background: #00cc99;
+    }
+    .showImg{
+        float: left;
+        margin-left: -92px;
+        width:300px;
+        height: 300px;
+        margin-top: -59px;
+        /* border: 1px solid; */
+    }
+    .m-bottom {
+        margin-top: -259px;
+        overflow: hidden;
+    }
+    .btn span {
+        cursor: pointer;
+        display: block;
+        float: left;
+        width: 184px;
+        height: 45px;
+        line-height: 45px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 180px;
+        text-align: center;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -moz-background-clip: padding-box;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+    }
+    .m-bottom .btn .nowBuy {
+        border: 1px solid #fe7c04;
+        color: #fe7c04;
+        background: #FFE3D0;
+    }
+
+    #carType{
+        margin-left: 417px;
+        margin-top: 0px;
+    }
+    #carPrice{
+        margin-left: 417px;
+        margin-top: -27px;
+    }
+    #module{
+        width: 417px;
+        height: 85px;
+        background: #FFFFFF;
+        margin-left: 417px;
+        margin-top: 12px;
+    }
+    .img{
+        margin-left: 417px;
+        margin-top: 21px;
+    }
+    .header {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 8;
+        margin-left: -600px;
+        border-bottom: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    #guazi {
+        background:url(../img/guazi.png);
+        background-size:70px 70px;
+        margin-left: 40px;
+    }
+    #ziti{
+        margin-left: 210px;
+        margin-top: 20px;
+    }
+    #daohang{
+        margin-top: -60px;
+    }
+    #myModal{
+        margin-top: 150px;
+    }
+
+    #changtu{
+        margin-top: -175px;
+        margin-left: 34px;
+    }
+</style>
+<body>
+<!--导航条-->
+<div id="daohang" style="width:1379px;height:60px;float:left;background-color: #f5f5f5">
+    <!--瓜子-->
+    <div  style="width:70px;height:70px;float:left" id="guazi"></div>
+
+
+
+    <div id="ziti">
+        <font >
+            <a href="../toUser">首页</a>
+            <a href="javascript:;">我要买车</a>
+            <a href="../toSellCarPage">我要卖车</a>
+            <a href="../toServicePage">瓜子服务</a>
+            <a href="../toLoans">瓜子金融</a>
+            <a href="javascript:;">毛豆新车</a>
+            热线电话 400-023-1529&thinsp; 登录
+
+        </font>
+    </div>
+
+
+</div>
+<!-- 汽车id -->
+<input type="hidden"  th:value="${id}" id="carId"/>
+<!-- 商品名称 -->
+<!--<input type="hidden" th:value="${cars.carType}" />-->
+
+<div id="sglayout">
+    <font  size="4px" ><div id="carType" th:text="${cars.carType}"></div></font>
+    <div class="showImg">
+        <img id="shopImgId" th:src="${cars.carImg}" width="460px" height="440px"/>
+    </div>
+    <!--几个小块-->
+    <div id="module">
+        <span th:text="${cars.carVehiclecondition}" ></span>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <span th:text="${cars.nian}" ></span>&thinsp;&thinsp;--&thinsp;&thinsp;<span th:text="${cars.yue}" ></span>月&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <span th:text="${cars.carSite}" ></span>
+        <br/>
+        <font  size="1px" color="#a9a9a9">车辆状况</font> &thinsp;&thinsp;&thinsp;&thinsp;|&thinsp;&thinsp; &thinsp;&thinsp;
+        <font  size="1px" color="#a9a9a9">上牌时间</font> &thinsp;&thinsp;&thinsp;&thinsp;|&thinsp;&thinsp;&thinsp;&thinsp;
+        <font  size="1px" color="#a9a9a9">验车地点</font>
+
+
+
+    </div>
+
+    <div id="carPrice">
+            车主报价 ：
+        <font  size="4px" color="#ff7f50"><b><span th:text="${cars.carPrice}" ></span>万</b></font>
+    </div>
+    <div class="img">
+        <img id="imgId" src="../img/shop01.png" width="460px" height="200px"/>
+    </div>
+    <!--  -->
+    <div class="m-bottom">
+        <a href="javascript:openMakeDialog()"><span class="nowBuy" id="nowBuy">预约看车</span></a>
+        <a href="javascript:saveGoods()"><span class="nowBuy2" id="nowBuy2">我要砍价</span></a>
+    </div>
+</div>
+<div class="changtu">
+    <img id="changtu" src="../jslib/img/wangyao.png" width="1320px"/>
+</div>
+
+<!--短信登录弹框-->
+<div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <form id="sellCarForm">
+                    <!--提交-->
+                    <div id="sub" style="display: block">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-7"><h4>手机登录后就可以帮您安排看车了哦</h4></div>
+                                <div class="col-sm-2"></div>
+                            </div><br/>
+                            <div class="row">
+                                <div class="col-sm-2">手机号</div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="userphone2"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm-2">验证码</div>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="login_code"/>
+                                </div>
+                                <div class="col-sm-2"><button type="button" onclick="getCode()" class="btn btn-success">获取验证码</button></div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <center><font size="3px" color="#008b8b">免费咨询400-069-6530</font><br/>
+
+                                    登录即视为同意《用户使用协议》及《隐私权条款》</center>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-primary" style="display: block" onclick="queren()" >
+                            确认卖车
+                        </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal hide fade" id="myModal2" tabindex="-1" role="dialog">
+    <div class="modal-header"><button class="close" type="button" data-dismiss="modal">×</button>
+        <h3 id="myModalLabel">Modal header</h3>
+    </div>
+    <div class="modal-body"></div>
+</div>
+</body>
+<script>
+    //打开预约看车弹框
+    function openMakeDialog(){
+        $("#myModal").modal("show");
+    }
+    function openDialog(){
+        $("#myModal2").modal("show");
+    }
+    //确认预约看车
+    function  queren() {
+        var phone_number = $('#userphone2').val() // 获取手机号
+        var login_code = $('#login_code').val() // 获取验证码
+        if (!phone_number) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return
+        }
+        if (!login_code) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入验证码!",
+            });
+            return
+        }
+        // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+        $.ajax({
+            url: '../homeLogin',
+            type: 'post',
+            data: {
+                login_code: login_code,
+                phone_number:phone_number
+
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data){
+                    bootbox.alert({
+                        size: "small",
+                        title: "提示",
+                        message: "确认卖车成功!我们会在2-3个工作日与您联系,请保持手机通畅!",
+                    });
+                } else{
+                    bootbox.alert("验证码错误");
+                }
+            },
+            error: function (data) {
+            }
+        })
+    }
+
+    // 获取验证码
+    function getCode(){
+
+        var phone = $("#userphone2").val();
+
+        if(phone == '' || phone == null){
+            alert("请输入手机号！");
+            return ;
+        }
+        $.ajax({
+            url: '../getCode',
+            type: 'post',
+            data: {
+                phone_number: phone
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    }
+
+</script>
+</html>

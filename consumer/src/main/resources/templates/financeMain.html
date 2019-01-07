@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>[瓜子二手车直卖网]</title>
+
+    <!-- 引入jquery -->
+    <script src="../jslib/jquery-2.1.1.min.js"></script>
+    <!-- 引入bootstrap的css -->
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.min.css"/>
+    <!-- 引入bootstrap-treeview的css -->
+    <link  href="../jslib/bootstrap/bootstrap-treeview/bootstrap-treeview.min.css" rel="stylesheet" />
+    <!-- 引入bootstrap-addTabs的css -->
+    <link rel="stylesheet" href="../jslib/bootstrap/bootStrap-addTabs/bootstrap.addtabs.css"/>
+    <!-- 引入bootstrap的js-->
+    <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="../static/jslib/bootstrap/js/bootstrap.min.js"></script>-->
+    <!-- 引入bootstrap的js-->
+    <script type="text/javascript" src="../jslib/bootstrap/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <!-- 引入bootstrap的js-->
+    <script src="../jslib/bootstrap/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap-table/bootstrap-table.css"/>
+    <script src="../jslib/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-fileinput/js/locales/zh.js"></script>
+   <link rel="stylesheet" href="../jslib/bootstrap/bootstrap-fileinput/css/fileinput.css"/>
+
+    <style type="text/css">
+        body {padding-top:5px;}
+        .img-responsive {
+            display: block;
+            height: auto;
+            max-width: 100%;
+            max-height: 95%;
+        }
+        .one{width: 100%;height: 100%;
+        }
+        .two{
+            width: 100%;height: 100%;
+            position: absolute;
+            z-index: 999;
+            top: 15px;
+            left: 0px;
+            /*background: rgba(00,22,33,0.5);*/
+        }
+        .three{
+            width: 350px;height: 230px;
+            position: absolute;
+            z-index: 999;
+            top: 80px;
+            left: 210px;
+            background: rgba(255,255,255,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid" >
+        <div class="one">
+            <img class="img-responsive" src="https://jr-sta.guazistatic.com/finance_web/banner.5355155850faa0c33e6316a71c94c6d9.png" />
+        </div>
+        <div class="two">
+            <div class="row" >
+                <div class="col-sm-1"></div>
+                <div class="col-sm-1">
+                    <img style="width: 70px" src="https://jr-sta.guazistatic.com/finance_web/gua-logo.6a59a211d81508a232ece27657d08071.png"/>
+                </div>
+
+                <div class="col-sm-1" id="toMain"><a href="../toUser"><font color="black">首页</font></a></div>
+                <div class="col-sm-1" id="toBuy"><a href="../toBuyCar"><font color="black">我要买车</font></a></div>
+                <div class="col-sm-1" id="toSell" ><a href="../toSellCarPage"><font color="black">我要卖车</font></a></div>
+                <div class="col-sm-1" id="toServe"><a href="../toServicePage"><font color="black">瓜子服务</font></a></div>
+                <div class="col-sm-1" id="toFinance">
+                    <a href="http://localhost:8081/toLoans" ><font color="black">金融服务</font> </a>
+                </div>
+                <div class="col-sm-1" id="toQuiz"><a href="#"><font color="black"> 瓜子问答</font></a></div>
+                <div class="col-sm-4"><font size="4" color="green">400-060-8024</font></div>
+            </div>
+        </div>
+
+        <div class="three" >
+            <div >
+                <center>
+                <h4 >定制方案</h4>
+                </center>
+                 <form id="shengQing" class="form-inline">
+                     <center>
+                        <div class="form-group">
+                            <input type="text"  style="width: 220px" id="phone" class="form-control" required="required" placeholder="请输入手机号"
+                                     title="请输入正确格式的手机号" pattern="/^1[345678]\d{9}$/" />
+                        </div><br/><br/>
+                        <div class="form-group">
+                            <input type="text"  id="login_code" style="width: 120px"  class="form-control"  placeholder="请输入验证码"
+                                     title="请输入短信验证码" />
+                            <button type="button" id="code" style="width: 97px" onclick="settime(this)" class="btn btn-success" >获取验证码</button>
+
+                        </div><br/><br/>
+                         <div class="form-group">
+                            <button type="button" style="width: 220px" onclick="openModel()" class="btn btn-danger btn-lg">立即申请</button>
+                        </div>
+                     </center>
+                    </form>
+            </div>
+        </div>
+
+        <!-- 申请模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            审核结果
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div >
+                            <center>
+                                <img src="../financeImg/timg.jpg" style="width: 80px; height: 99px"/>
+                                <div >
+                                    <h3>身份认证成功</h3> <br/>
+                                    <img src="../../financeImg/6d895d08058fac02c065946e12b6150.png" height="74"
+                                         width="356"/>
+                                    <br/>
+                                    <font size="4" color="#696969">
+                                        请注意接受瓜子客服来电<br/>
+                                        您可以先挑选爱车，我们会根据车辆为您推荐金融产品
+                                    </font><br/><br/>
+
+                                    <font size="4" color="#696969">
+                                        申请过程中有问题可联系
+                                    </font>
+                                    <font size="3" color="lime">
+                                        4000608024
+                                    </font><br/><br/><br/>
+                                    <p>
+                                        <button type="button" style="width: 180px;height: 60px" onclick="tokanche()" class="btn btn-default">
+                                            <font size="4" color="green">海量好车供您挑选</font>
+                                        </button>
+                                        <font>   </font>
+                                        <button type="button" style="width: 180px;height: 60px" onclick="openModel2()" class="btn btn-primary">
+                                            <font size="4" >查 看 额 度</font><br/>
+                                            <font size="2">完善个人信息</font><br/>
+                                        </button>
+                                    </p>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+        <!-- 完善信息模态框（Modal） -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog"  aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                         <center>
+                             <font size="5">完善信息</font>
+                         </center><br/>
+                        <div style="background: #add8e6; color: #ff1493;width: 100%;height: 35px">
+                            <center>
+                            <font  size="4">填写真实信息，获取更高购车贷款额度</font>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form id="borrwerForm">
+                            <div class="form-group">
+                               <input type="hidden" name="phone" id="phone2" class="form-control" />
+                            </div>
+
+                            <div class="form-group">
+                                <label >婚姻状况</label>
+                                <select class="form-control" name="marriage">
+                                    <option value="-1">请选择</option>
+                                    <option value="1">丧偶</option>
+                                    <option value="2">未婚</option>
+                                    <option value="3">离婚</option>
+                                    <option value="4">已婚</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label >工作状况</label>
+                                <select class="form-control" name="work">
+                                    <option value="-1">请选择</option>
+                                    <option value="1">自由职业</option>
+                                    <option value="2">个体商户</option>
+                                    <option value="3">民营企业</option>
+                                    <option value="4">三资企业</option>
+                                    <option value="5">民营企业国企/央企/大型股份制公司</option>
+                                    <option value="6">政府机关/事业单位</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label >教育水品</label>
+                                <select class="form-control" name="education">
+                                    <option value="-1">请选择</option>
+                                    <option value="1">文盲/半文盲</option>
+                                    <option value="2">小学</option>
+                                    <option value="3">初中</option>
+                                    <option value="4">高中</option>
+                                    <option value="5">技术学校</option>
+                                    <option value="6">大专</option>
+                                    <option value="7">本科</option>
+                                    <option value="8">研究生及以上</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label >住房状况</label>
+                                <select class="form-control" name="housing">
+                                    <option value="-1">请选择</option>
+                                    <option value="1">宿舍</option>
+                                    <option value="2">租房</option>
+                                    <option value="3">自建房</option>
+                                    <option value="4">父母名下房产</option>
+                                    <option value="5">本地按揭房产</option>
+                                    <option value="6">本地自有商品房</option>
+                                    <option value="7">自有按揭商品房</option>
+                                    <option value="8">自有全款商品房</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="addBorrower()" class="btn btn-danger btn-lg btn-block">提  交</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+
+    </div>
+        <br/>
+    <div class="container">
+         <div class="row">
+                <div class=" col-md-3">
+                    <div >
+                        <center>
+                        <img src="https://jr-sta.guazistatic.com/finance_web/intro1.5b035ea6b171328c7147b5ec7eff0eb9.png"
+                             alt="通用的占位符缩略图"/>
+                        <div >
+                            <h3>选择多</h3>
+                            <font color="#696969">几十款精选金融方案</font>
+
+                        </div>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div >
+                        <center>
+                        <img src="https://jr-sta.guazistatic.com/finance_web/intro2.313b9e8dec25102e87d9043c9342b37e.png"
+                             alt="通用的占位符缩略图"/>
+                        <div >
+                            <h3>审核快</h3>
+                            <font color="#696969">最快30分钟完成审批</font>
+
+                        </div>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div >
+                        <center>
+                        <img src="https://jr-sta.guazistatic.com/finance_web/intro3.6837611dfa80abe43ac4c41c83fa2167.png"
+                             alt="通用的占位符缩略图"/>
+                        <div >
+                            <h3>通过率高</h3>
+                            <font color="#696969">定制方案 更高审批通过率</font>
+                        </div>
+                        </center>
+                    </div>
+                </div>
+                <div class=" col-md-3">
+                    <div >
+                        <center>
+                        <img src="https://jr-sta.guazistatic.com/finance_web/intro4.2facde419d9ba1e1c35dd19c6995f9a1.png"
+                             alt="通用的占位符缩略图"/>
+                        <div >
+                            <h3>专属服务</h3>
+                            <font color="#696969">金融专员全程服务</font>
+                        </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        <br/><br/>
+    </div>
+
+    <div class="container">
+        <font size="6">最受欢迎的分期购车</font>
+        <hr/>
+        <div class="row">
+            <div class="col-lg-5" >
+                <a href="http://localhost:8081/toLoans" >
+                <img class="img-responsive" height="150%" src="https://jr-sta.guazistatic.com/finance_web/focus1.118eca4787e68b850609b5d06e1ef4ae.jpg" />
+                </a>
+            </div>
+
+            <div class="col-lg-7" >
+                <div class="row">
+                    <div class="col-lg-4" >
+                        <div id="search1">
+                            <a href="http://localhost:8081/toLoans" >
+                                <font size="4" color="red">每天只需几十元</font><br/>
+                                <font size="3" >5万内练手车</font>
+                            <img class="img-responsive" src="https://jr-sta.guazistatic.com/finance_web/hotCar1.40c313f57a5880217ff70257e9a2b592.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" >
+                        <div id="search2">
+                            <a href="http://localhost:8081/toLoans" >
+                                <font size="4" color="red">月供只要1500</font><br/>
+                                <font size="3" >工薪族最爱</font>
+                            <img class="img-responsive" src="https://jr-sta.guazistatic.com/finance_web/hotCar2.94b24159efc12eeb5eeda1f40e377949.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" >
+                        <div id="search3">
+                            <a href="http://localhost:8081/toLoans" >
+                                <font size="4" color="red">同首付，买辆敞篷的</font><br/>
+                                <font size="3" >suv家庭代步首选</font>
+                            <img class="img-responsive" src="https://jr-sta.guazistatic.com/finance_web/hotCar3.c0454da2f604a334f6142518a39c4f84.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                 <br/>
+                <div class="row">
+                    <div class="col-lg-4" >
+                        <div id="search4">
+                            <a href="http://localhost:8081/toLoans" >
+                                <font size="4" color="red">低首付高品质</font><br/>
+                                <font size="3" >标准车</font>
+                            <img  class="img-responsive" src="https://jr-sta.guazistatic.com/finance_web/hotCar4.5502ac94d335eec43908f66b7fb3e5ce.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" >
+                        <div id="search5">
+                            <a href="http://localhost:8081/toLoans" >
+                                <font size="4" color="red">首付不到5万元</font><br/>
+                                <font size="3" >奔驰宝马开回家</font>
+                            <img class="img-responsive" src="https://jr-sta.guazistatic.com/finance_web/hotCar5.0f1f71effaa963580c509d68a602e247.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4" >
+                        <div id="search6">
+                            <a href="http://localhost:8081/toLoans" >
+                                <font size="4" color="red">买的早不如刚刚好</font><br/>
+                                <font size="3" >车主急售实惠</font>
+                            <img class="img-responsive"  src="https://jr-sta.guazistatic.com/finance_web/hotCar6.3e110c863796b254f36c12e4fe39040f.jpg" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <br/>
+        <font size="6">到款流程</font>
+        <hr/>
+        <div class="row">
+            <div class=" col-md-3">
+                <div >
+                    <center>
+                    <img src="https://jr-sta.guazistatic.com/finance_web/process1.b7b98dac43e91a86ddb16ba6ced70b40.png"
+                         alt="通用的占位符缩略图"/>
+                    <div >
+                        <h3>30秒申请</h3>
+                        <font color="#696969">需要分期购车，提交基本信息可申请
+                        </font>
+                    </div>
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div >
+                    <center>
+                    <img src="https://jr-sta.guazistatic.com/finance_web/process2.ed386207c107dda76e12b92f1dbe2c2d.png"
+                         alt="通用的占位符缩略图"/>
+                    <div >
+                        <h3>预约看车</h3>
+                        <font color="#696969">在线挑选爱车，线下售车顾问一对一全程陪同讲解
+                        </font>
+                    </div>
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div >
+                    <center>
+                    <img src="https://jr-sta.guazistatic.com/finance_web/process3.63369331ad385c056f32b1fb4e703db9.png"
+                         alt="通用的占位符缩略图"/>
+                    <div >
+                        <h3>极速审批</h3>
+                        <font color="#696969">资料提交后立即审批，免流
+                            水、免家访，最快30分钟出结果</font>
+                    </div>
+                    </center>
+                </div>
+            </div>
+            <div class=" col-md-3">
+                <div >
+                    <center>
+                    <img src="https://jr-sta.guazistatic.com/finance_web/process4.5ded3cbb1138e96319b370c3ec7b94ef.png"
+                         alt="通用的占位符缩略图"/>
+                    <div>
+                        <h3>放贷提车</h3>
+                        <font color="#696969">瓜子助您完成车辆过户、
+                            抵押等手续后，当天放款</font>
+                    </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <br/>
+        <font size="6">合作机构</font>
+        <hr/>
+    <div class="row">
+        <div class="col-sm-4 col-md-2">
+            <div class="thumbnail">
+                <img src="https://image.guazistatic.com/gz01180912/15/56/43d1e49f1627d9d475dcfe659a33f888.png"
+                     alt="通用的占位符缩略图"/>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-2">
+            <div class="thumbnail">
+                <img src="https://image.guazistatic.com/gz01180912/15/54/4dbc01d980fecca2d8686f471970f6b6.png"
+                     alt="通用的占位符缩略图"/>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-2">
+            <div class="thumbnail">
+                <img src="https://image.guazistatic.com/gz01180912/16/01/5516a1f36bef6301513da42f04a2b71e.png"
+                     alt="通用的占位符缩略图"/>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-2">
+            <div class="thumbnail">
+                <img src="https://image.guazistatic.com/gz01180912/15/52/63178b29e6866e67d5bef53911c2a665.png"
+                     alt="通用的占位符缩略图"/>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-2">
+            <div class="thumbnail">
+                <img src="https://image.guazistatic.com/gz01180912/16/00/645daa2506f57d869255bc3c25bc913f.png"
+                     alt="通用的占位符缩略图"/>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-2">
+            <div class="thumbnail">
+                <img src="https://image.guazistatic.com/gz01180912/15/55/963cc583a6dc406bc51d4636d530f7cf.png"
+                     alt="通用的占位符缩略图"/>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-2">
+                <div class="thumbnail">
+                    <img src="https://image.guazistatic.com/gz01180912/15/58/96a448b4385c769024ad870c492ee202.png"
+                         alt="通用的占位符缩略图"/>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-2">
+                <div class="thumbnail">
+                    <img src="https://image.guazistatic.com/gz01180912/15/58/98041fb3a84fa861b39c68bfdb3b68e2.png"
+                         alt="通用的占位符缩略图"/>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-2">
+                <div class="thumbnail">
+                    <img src="https://image.guazistatic.com/gz01180912/15/57/ca5a57b05ad9ed87b55e9074bd7d0355.png"
+                         alt="通用的占位符缩略图"/>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-2">
+                <div class="thumbnail">
+                    <img src="https://image.guazistatic.com/gz01180912/16/00/d9f888499d81bcd50e2758484e192aab.png"
+                         alt="通用的占位符缩略图"/>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-2">
+                <div class="thumbnail">
+                    <img src="https://image.guazistatic.com/gz01180912/15/51/eba7f7b003a50483edc0e016abafc449.png"
+                         alt="通用的占位符缩略图"/>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-2">
+                <div class="thumbnail">
+                    <img src="https://image.guazistatic.com/gz01180912/15/53/f6e567734ff0b68fd6891491f63f918d.png"
+                         alt="通用的占位符缩略图"/>
+                </div>
+            </div>
+        </div>
+        <center>
+            <button type="button" id="toTop" style="width: 280px" class="btn btn-warning btn-lg">立即申请</button>
+        </center>
+        <br/>
+        <br/>
+    </div>
+
+
+    <div style="background: #696969; color: #faebd7;width: 100%;height: 250px">
+       <br/>
+        <div class="container" style="border-width:15px">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-7">
+                <div class="col-md-3">
+                    <img src="https://jr-sta.guazistatic.com/finance_web/gua-logo.6a59a211d81508a232ece27657d08071.png"  />
+                </div>
+                <div class="col-md-3">
+                    <p>
+                        咨询电话：400-023-1529 <br/>
+                        <span>（周一至周日 8:00-21:00）</span>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <img src="https://jr-sta.guazistatic.com/finance_web/ewm-app.b62b99186862e35a7b0ebfdb9b2df835.jpg" />
+                    <p class="ewm-tit gz-wx">关注微信</p>
+                </div>
+                <div class="col-md-3">
+                    <img src="https://jr-sta.guazistatic.com/finance_web/ewm-wx.1342a148b50ad56a4d34b36d561581fb.jpg" />
+                    <p class="ewm-tit gz-app">下载APP</p>
+                  </div>
+            </div>
+            <div class="col-md-5">
+                <div class="col-md-3">
+                        <a href="http://www.guazi.com/bj/aboutus/" target="_blank">关于瓜子</a>
+                </div>
+                <div class="col-md-3">
+                        <a href="https://zhaopin.guazi.com/" target="_blank">加入我们</a>
+                </div>
+                <div class="col-md-3">
+                        <a href="http://www.guazi.com/bj/contact/" target="_blank">联系我们</a>
+                </div>
+                <div class="col-md-3">
+                        <a href="http://www.guazi.com/bj/intro/" target="_blank">服务保障</a>
+                </div>
+
+                <div class="col-md-12">
+                    <p class="arc-info">Copyright 2017 www.guazi.com All Rights Reserved</p>
+                    <p class="arc-info">京ICP备15053955号 ICP证151071号</p>
+                    <p class="arc-info">京公网安备11010802020161号</p>
+                </div>
+            </div>
+            <div class="col-md-12"></div>
+            </div>
+
+         </div><!--布局-->
+        </div>
+
+</body>
+
+<script type="text/javascript">
+    //回到页面顶部
+    $(function(){
+            $("#toTop").click(function(){
+                    $("html").animate({"scrollTop": "0px"},100); //IE,FF
+                    $("body").animate({"scrollTop": "0px"},100); //Webkit
+                    });
+             })
+/*    //手机号正则
+    function openModel(){
+        var phone = $("#phone").val();
+        var reg=/^1[345678]\d{9}$/;
+        if (phone=='') {
+            alert("请输入手机号！");
+        }else if(reg.test(phone)){
+            $("#myModal").modal("show");
+        }else{
+            alert("手机号格式错误，请重新输入！");
+        }
+    }*/
+    //打开贷款信息详情弹框
+    function openModel2(){
+        var pp = $("#phone").val();
+        $("#phone2").val(pp);
+        $("#myModal").modal("hide");
+        $("#myModal2").modal("show");
+    }
+
+    //关闭模态框时清空数据
+    $(function (){
+        $('#myModal2').on('hidden.bs.modal', function (){
+            $(':input','#borrwerForm').not(':button,:submit,:reset').val('').removeAttr('checked').removeAttr('checked');
+        });
+    });
+
+    //新增贷款申请
+    function addBorrower(){
+        //序列化获得表单数据，
+        var data= $("#borrwerForm").serialize();
+        $.ajax({
+            url:'../saveBorrwer',
+            type:"post",
+            data:data,
+            cache:false,//false是不缓存，true为缓存
+            async:true,//true为异步，false为同步
+            success:function(data){
+                //请求成功时
+                bootbox.alert({
+                    size: "small",
+                    title: "提示",
+                    message: "确认卖车成功!我们会在2-3个工作日与您联系,请保持手机通畅!",
+                });
+                $("#myModal2").modal('hide');
+                window.location.reload()//重新加载页面
+            },
+            error:function(data){
+                //请求失败时
+                bootbox.alert({
+                    size: "small",
+                    title: "提示",
+                    message: "数据提交失败!",
+                });
+                $(":input","#borrwerForm")
+                    .not(":button, :submit, :reset, :hidden")
+                    .val("")
+                    .removeAttr("checked")
+                    .removeAttr("selected");
+            }
+        })
+    }
+    // 获取手机号  按钮倒计时
+     var countdown=60;
+    function settime(val) {
+        var phone = $("#phone").val();
+        var reg=/^1[345678]\d{9}$/;
+        if (phone=='') {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return;
+        }else if(reg.test(phone)){
+            if(countdown == 60){
+                getCode(phone);
+            }
+            if (countdown == 0) {
+                val.removeAttribute("disabled");
+                /*val.value="获取验证码";*/
+                document.getElementById("code").innerHTML = "获取验证码",
+                    countdown = 60;
+            } else {
+                val.setAttribute("disabled", true);
+                /* val.value="重新发送(" + countdown + ")";*/
+                document.getElementById("code").innerHTML = "重新发送(" + countdown + ")",
+                    countdown--;
+                setTimeout(function() {
+                    settime(val)
+                },1000)
+            }
+        }else{
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "手机号格式错误请重新输入!",
+            });
+        }
+    }
+
+    //获取手机验证码
+    function  getCode(phone){
+            // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+            $.ajax({
+                url: '../getCode',
+                type: 'post',
+                data: {
+                    phone_number: phone
+                },
+                success: function (data) {
+                    console.log(data)
+                    bootbox.alert({
+                        size: "small",
+                        title: "提示",
+                        message: "验证码已发送,请及时回复!",
+                    });
+                },
+                error: function (data) {
+                    console.log(data)
+                }
+            })
+         }
+
+    // 点击申请贷款 到后台确认验证码
+        function  openModel() {
+
+        var phone_number = $('#phone').val() // 获取手机号
+        var login_code = $('#login_code').val() // 获取验证码
+        if (!phone_number) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return
+        }
+        if (!login_code) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入验证码!",
+            });
+            return
+        }
+
+        // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+        $.ajax({
+            url: '../login',
+            type: 'post',
+            data: {
+                login_code: login_code,
+                phone_number:phone_number
+        },
+            dataType: 'json',
+            success: function (data) {
+                if (data){
+                    $("#myModal").modal("show");
+                } else{
+                    bootbox.alert({
+                        size: "small",
+                        title: "提示",
+                        message: "验证码错误!",
+                    });
+                }
+            },
+            error: function (data) {
+            }
+        })
+    }
+    //挑选车辆
+    function tokanche(){
+        window.location.href=" ../toBuyCar";
+    }
+
+
+</script>
+</html>

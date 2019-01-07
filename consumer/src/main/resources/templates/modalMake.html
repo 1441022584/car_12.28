@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<script src="../jslib/jquery-2.1.1.min.js"></script>
+<link rel="stylesheet" href="../jslib/bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" href="../jslib/bootstarp/bootstrap3/css/bootstrap.css"/>
+<link rel="stylesheet" href="../jslib/bootstarp/bootstrap3/css/bootstrap-theme.css"/>
+<script src="../jslib/bootstarp/bootstrap3/js/bootstrap.js"></script>
+<script src="../jslib/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="../jslib/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+<style>
+    .row{
+        margin-top:15px;
+    }
+</style>
+<body>
+<div class="container-fluid">
+    <form id="formUser" class="form-horizontal">
+        <div class="row">
+           <font size="4"><center>预约今天看车，即享优惠</center></font>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">看车地点：</div>
+            <div class="col-xs-6">
+                <input type="text" disabled="disabled" class="form-control" name="carSite" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-3">看车时间：</div>
+            <div class="col-xs-6">
+                <input type="hidden" class="form-control" name="id" />
+                <input type="hidden" class="form-control" name="carStatus" />
+                <input type="hidden"  name="carSeries" />
+                <input type="hidden"  name="carRoadroller" />
+                <input type="hidden"  name="cartype" />
+                <input type="hidden"  name="carLicencesto" />
+                <input type="hidden"  name="carVehiclecondition" />
+                <input type="hidden"  name="carDemand" />
+                <input type="hidden"  name="carDisplacement" />
+                <input type="hidden"  name="carLicenseplatenumber" />
+                <input type="hidden"  name="carSite" />
+                <input type="hidden"  name="carParameter" />
+                <input type="hidden"  name="carDetails" />
+                <input type="hidden"  name="carTime" />
+                <input type="hidden"  name="carage" />
+                <input type="hidden"  name="mileage" />
+                <input type="hidden"  name="carpart" />
+                <input type="hidden"  name="carshift" />
+                <input type="hidden"  name="carseat" />
+                <input type="hidden"  name="carMonthString" />
+                <input type="text" class="form-control date" name="carLicenseMonth" />
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    //时间
+    $('.date').datetimepicker({
+        language : 'zh-CN',//显示中文
+        //	  format: 'yyyy-mm-dd hh:ii:ss',//显示格式
+        format : 'yyyy-mm-dd',//显示格式
+        minView : "month",//设置只显示到月份
+        initialDate : new Date(),//初始化当前日期
+        autoclose : true,//选中自动关闭
+        todayBtn : true
+        //显示今日按钮
+    });
+</script>
+</html>

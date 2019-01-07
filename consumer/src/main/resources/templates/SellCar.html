@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>瓜子二手车直卖网</title>
+  <script src="../jslib/jquery-2.1.1.min.js"></script>
+  <link rel="stylesheet" href="../js/swiper.css"/>
+  <link rel="stylesheet" href="../js/main.css"/>
+  <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.css"/>
+  <script src="../jslib/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+  <style>
+    .row{
+      margin-top:20px;
+    }
+  </style>
+
+</head>
+
+<body>
+<!-- 整个页面Div-->
+<div id="box">
+  <!-- 导航栏开始-->
+  <div id="nav">
+    <!--点击瓜子二手车的图标，直接跳主页-->
+    <h1><a href="javascript:;" class="login_img"></a></h1>
+    <!-- 城市部分-->
+    <div class="city">
+      <!-- 鼠标悬停 .city添加class名active -->
+      <p class="city-curr" data-domain="bj" data-id="12">
+        北京
+      </p>
+      <div class="white-line"></div>
+    </div>
+
+    <div id="nav_list">
+      <ul>
+        <li><a href="../toUser">首页</a></li>
+        <li><a href="../toBuyCar">我要买车</a></li>
+        <li><a href="../toSellCarPage">我要卖车</a></li>
+        <li><a href="../toServicePage">瓜子服务</a></li>
+        <li><a href="../toLoans">瓜子金融</a></li>
+        <li><a href="javascript:;">毛豆新车</a></li>
+      </ul>
+    </div>
+
+    <div id="phone">
+      <div class="more_thing">
+        <p>热线电话 400-023-1529</p>
+        <div id="login">
+          登录
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 导航栏结束-->
+
+  <!-- 第二部分-->
+  <div class="sell-area">
+    <div class="title_text">
+      瓜子二手车直卖网 二手车行业领军者
+    </div>
+    <div class="phone-area">
+      <input class="phone-input js-phone-input" placeholder="请输入手机号码，5659万车主已提交" id="RegisterPhone"/>
+      <button class="phone-btn-1 free-sell-btn" id="SellFree"  data-toggle="modal" data-target="#myModal" onclick="confirm()">
+        免费卖车
+      </button>
+      <p class="js-phone-error "></p>
+    </div>
+    <div class="new-car-entr">
+      &gt;&gt;&gt;&gt;<a href="https://xinche.guazi.com/www/fyc"  title="">首付10%，厂商直供，爆款新车开回家 去抢购 &gt;</a>
+    </div>
+  </div>
+  <!--第三部分-->
+  <div class="inc-ser">
+    <p class="inc-ser-tit">瓜子保卖服务</p>
+    <p class="inc-ser-txt">立即拿车款 安心卖高价</p>
+    <ul class="inc-ser-li">
+      <li>
+        <div class="inc-ser-icon inc-ser-icon-1"></div>
+        <p class="inc-ser-tip">当天拿钱</p>
+        <p class="inc-ser-desc">最高首付70%<br/>15天尾款到账</p>
+      </li>
+      <li>
+        <div class="inc-ser-icon inc-ser-icon-2"></div>
+        <p class="inc-ser-tip">快速高价</p>
+        <p class="inc-ser-desc">面向全国买家<br/>锁定最优价格</p>
+      </li>
+      <li>
+        <div class="inc-ser-icon inc-ser-icon-3"></div>
+        <p class="inc-ser-tip">托管省心</p>
+        <p class="inc-ser-desc">专人帮你卖车<br/>每次节省3小时</p>
+      </li>
+    </ul>
+    <a href="javascript:;" class="inc-ser-detail-link">
+      <i>查看详情介绍</i>
+    </a>
+  </div>
+
+  <!-- 轮播图部分 -->
+  <div class="recent-deal">
+    <div class="con-tit">
+      <p>最新成交</p>
+      <i></i>
+    </div>
+    <div class="deal-list swiper-container">
+      <ul class="deal-list-wrapper swiper-wrapper">
+        <div class="swiper-slide">
+          <li>
+            <img src="../images/car.jpg"/>
+            <p class="deal-p1">哈飞 路尊小霸王 2010款 1.0L经济型D10</p>
+            <p class="deal-p2">2012年 | 6.5万公里 | 鄂尔多斯</p>
+            <p class="deal-p3">成交价<em>10000元</em></p>
+            <div class="deal-day">3天<br/><em>卖出</em></div>
+          </li>
+          <li>
+            <img src="../images/car1.jpg"/>
+            <p class="deal-p1">哈飞 路尊小霸王 2010款 1.0L经济型D10</p>
+            <p class="deal-p2">2012年 | 6.5万公里 | 鄂尔多斯</p>
+            <p class="deal-p3">成交价<em>20000元</em></p>
+            <div class="deal-day">3天<br/><em>卖出</em></div>
+          </li>
+          <li>
+            <img src="../images/car2.jpg"/>
+            <p class="deal-p1">哈飞 路尊小霸王 2010款 1.0L经济型D10</p>
+            <p class="deal-p2">2012年 | 6.5万公里 | 鄂尔多斯</p>
+            <p class="deal-p3">成交价<em>30000元</em></p>
+            <div class="deal-day">3天<br/><em>卖出</em></div>
+          </li>
+          <li>
+            <img src="../images/car3.jpg"/>
+            <p class="deal-p1">哈飞 路尊小霸王 2010款 1.0L经济型D10</p>
+            <p class="deal-p2">2012年 | 6.5万公里 | 鄂尔多斯</p>
+            <p class="deal-p3">成交价<em>40000元</em></p>
+            <div class="deal-day">3天<br/><em>卖出</em></div>
+          </li>
+        </div>
+      </ul>
+    </div>
+    <a class="deal-more" href="javascript:void(0)">查看全部成交车源</a>
+  </div>
+
+  <div class="guazi-qa">
+    <div class="qa-box">
+      <div class="con-tit">
+        <p>瓜子问答</p>
+        <i></i>
+      </div>
+      <ul class="qa-list clearfix">
+        <li>
+          <div class="qa-pic qa-pic-1"></div>
+          <div class="qa-con">
+            <p class="qa-t">Q1：在瓜子卖车有什么优势？<i></i> </p>
+            <p class="qa-txt">瓜子二手车直卖网是中国领先的二手车直卖平台，平均每一分钟就成交一辆。瓜子二手车撮合个人直接卖给个人，没有中间商赚差价，买家少花钱，车辆平均7天售出，卖车流程安全省心可靠。</p>
+          </div>
+        </li>
+        <li>
+          <div class="qa-pic qa-pic-2"></div>
+          <div class="qa-con">
+            <p class="qa-t">Q2：卖车流程是怎样的？<i></i> </p>
+            <p class="qa-txt">
+              1、在本页填写卖车信息或拨打400-023-1529联系我们。<br/>
+              2、接受评估师专业的上门质检，定出售价。<br/>
+              3、交易专员带领买家上门看车。<br/>
+              4、达成交易协议，瓜子二手车直卖网提供过户服务。<br/>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="qa-pic qa-pic-3"></div>
+          <div class="qa-con">
+            <p class="qa-t">Q3：卖车需要准备什么？<i></i> </p>
+            <p class="qa-txt">1、身份证；2、环保标；3、购置税本；4、行驶证；5、检字标；6、购置税发票；7、车辆登记证；8、交强险标；9、购车发票/最近一次过户发票；10、交强险单。</p>
+          </div>
+        </li>
+        <li>
+          <div class="qa-pic qa-pic-4"></div>
+          <div class="qa-con">
+            <p class="qa-t">Q4：大概多久能成交？<i></i> </p>
+            <p class="qa-txt">大部分车辆在瓜子二手车直卖网上上架7天内就可成交。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer js-footer">
+    <!--加载footer 信息部分 -->
+    <div class="company-info clearfix">
+      <div class="footer-logo"></div>
+      <div class="phone-email">
+        <p>
+          咨询电话：<i>400-023-1529</i><span>（周一至周日 8:00-21:00）</span>
+          <br/> 服务监督热线：
+          <i>400-066-8780</i><span>（周一至周日 9:00-21:00）</span>
+        </p>
+        <p>互联网违法或不良信息举报联系方式：
+          <br/> 邮箱：
+          <i>jubao@guazi.com</i>&nbsp;&nbsp;电话：<i>010-89191670</i>
+        </p>
+      </div>
+      <div class="ewm-box">
+        <img src="../images/ewm-wx-2.png" alt="" class="gz-ewm"/>
+        <p class="ewm-tit">关注微信</p>
+      </div>
+      <div class="ewm-box">
+        <img src="../images/erwe1.png" alt="" class="gz-ewm"/>
+        <p class="ewm-tit">下载APP</p>
+        <p class="ewm-tit-tip">瓜分十亿红包</p>
+      </div>
+      <div class="basic-info">
+        <div class="info-link">
+          <a rel="nofollow" href="javascript:;" target="_blank">关于瓜子</a>
+          <a rel="nofollow" href="javascript:;" target="_blank">集团介绍</a>
+          <a rel="nofollow" href="javascript:;" target="_blank">加入我们</a>
+          <a rel="nofollow" href="javascript:;" target="_blank">联系我们</a>
+          <a rel="nofollow" href="javascript:;" target="_blank">服务保障</a>
+          <a rel="nofollow" href="javascript:;" target="_blank">隐私声明</a>
+          <a rel="nofollow" href="javascript:;" target="_blank">服务条款</a>
+          <a rel="nofollow" href="javascript:;" target="_blank">营业执照</a>
+        </div>
+        <p class="arc-info">Copyright 2019 www.guazi.com All Rights Reserved</p>
+        <p class="arc-info">京ICP备15053955号 ICP证151071号 </p>
+        <div class="protect clearfix">
+          <a rel="nofollow" target="_blank" href="javascript:;" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+            <img src="../images/ghs.png" style="float:left;"/>
+            <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备
+              11010802020161号</p>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <!--seo 链接 -->
+    <div class="">
+      <div class="friendly-link">
+        <p class="link-tit">热门品牌:</p>
+        <span class="open-box"></span>
+        <span class="close-box" data-role="is_show_box"></span>
+        <a href="javascript:;" target="_blank">吉林二手大众</a>
+        <a href="javascript:;" target="_blank">吉林二手丰田</a>
+        <a href="javascript:;" target="_blank">吉林二手奔腾</a>
+        <a href="javascript:;" target="_blank">吉林二手本田</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+        <a href="javascript:;" target="_blank">吉林二手现代</a>
+
+      </div>
+
+      <div class="friendly-link">
+        <p class="link-tit">热门车系:</p>
+        <span class="open-box"></span>
+        <span class="close-box" data-role="is_show_box"></span>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+        <a href="javascript:;" target="_blank">吉林二手哈弗哈弗H6</a>
+
+      </div>
+
+      <div class="friendly-link">
+        <p class="link-tit">热门城市:</p>
+        <span class="open-box"></span>
+        <span class="close-box" data-role="is_show_box"></span>
+        <a href="javascript:;" target="_blank">全国二手车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">郑州高价卖车</a>
+        <a href="javascript:;" target="_blank">二手车</a>
+      </div>
+
+
+      <!--公司信息-->
+      <p style="text-align:center;line-height:20px;font-size:12px;color:#666; padding-top:20px;">
+        车好多旧机动车经纪（北京）有限公司   
+        北京市顺义区南法信镇政府西侧(北京市旧机动车交易市场有限公司顺义分市场院内A区01号)   
+        010-57317000
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- 登录弹窗 -->
+<div class="pop-box pop-login js-pop-login" id="login_modal">
+  <form target="guazi_login" action="" method="post">
+    <div class="pop-close" id="closeLogin"></div>
+    <p class="pop-tit">瓜子二手车直卖网</p>
+    <ul class="phone-login">
+      <li>
+        <p class="phone-login-tit">手机号码</p>
+        <input name="phone" id="phone_num" class="phone-login-input js-phoneNum js-phone-input" placeholder="请输入您的手机号码"/>
+      </li>
+      <li>
+        <p class="phone-login-tit"> 验证码</p>
+        <input name="code" id="login_code" class="phone-login-input phone-login-code js-code" placeholder="请输入验证码" style="width: 232px;"/>
+        <div class="get-code" id="code">获取验证码</div>
+      </li>
+    </ul>
+    <p class="p-error" id="loginError"></p>
+    <button class="sub-btn js-checkcode" type="button" id="login_but">登录</button>
+    <p class="free-phone">免费咨询400-023-1529</p>
+  </form>
+</div>
+
+
+<!--存放添加的用户id 的地方-->
+<input type="hidden" id="useridhidden"/>
+
+
+<!--新增模态框-->
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" role="dialog" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">×
+        </button>
+        <form id="sellCarForm">
+          <div id="firststep" >
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-7"><h4>只差<font color="#22ac38">2</font>步，多卖<font color="#22ac38">20%</font>，平均<font color="#22ac38">7</font>天成交</h4></div>
+                <div class="col-sm-2"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">售卖车型<input  type="hidden" id="phonehidden" name="phoneNumber"/></div>
+                <div class="col-sm-4">
+                  <input type="hidden" name="carType" id="carTypehidden"/>
+                  <select class="form-control"  placeholder="品牌" id="carType">
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <select name="carSeries" class="form-control"   placeholder="车系" id="carSeries">
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">上牌时间</div>
+                <div class="col-sm-4">
+                  <select name="carLicenseYear" class="form-control" >
+                    <option value="2019">2019年</option>
+                    <option value="2018">2018年</option>
+                    <option value="2017">2017年</option>
+                    <option value="2016">2016年</option>
+                    <option value="2015">2015年</option>
+                    <option value="2014">2014年</option>
+                    <option value="2013">2013年</option>
+                    <option value="2012">2012年</option>
+                    <option value="2011">2011年</option>
+                    <option value="2010">2010年</option>
+                    <option value="2009">2009年</option>
+                    <option value="2008">2008年</option>
+                    <option value="2007">2007年</option>
+                    <option value="2006">2006年</option>
+                    <option value="2005">2005年</option>
+                    <option value="2004">2004年</option>
+                    <option value="2003">2003年</option>
+                    <option value="2002">2002年</option>
+                    <option value="2001">2001年</option>
+                    <option value="2000">2000年</option>
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <select name="carLicenseMonth" class="form-control" >
+                    <option value="1">1月</option>
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                    <option value="5">5月</option>
+                    <option value="6">6月</option>
+                    <option value="7">7月</option>
+                    <option value="8">8月</option>
+                    <option value="9">9月</option>
+                    <option value="10">10月</option>
+                    <option value="11">11月</option>
+                    <option value="12">12月</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">行驶里程（万公里）</div>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" name="mileage"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">牌照地</div>
+                <div class="col-sm-8">
+                  <select name="carRoadroller" class="form-control">
+                    <option value="北京">北京</option>
+                    <option value="上海">上海</option>
+                    <option value="山西">山西</option>
+                    <option value="陕西">陕西</option>
+                    <option value="河南">河南</option>
+                    <option value="四川">四川</option>
+                    <option value="云南">云南</option>
+                    <option value="内蒙古">内蒙古</option>
+                    <option value="河北">河北</option>
+                    <option value="黑龙江">黑龙江</option>
+                    <option value="安徽">安徽</option>
+                    <option value="山东">山东</option>
+                    <option value="广州">广州</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">车况</div>
+                <div class="col-sm-8">
+                  <select name="carVehiclecondition" class="form-control" >
+                    <option value="1">车况好，无事故且外观无损伤</option>
+                    <option value="2">车况正常，无事故但有少量剐蹭钣金</option>
+                    <option value="3">车况一般，发生过碰撞事故</option>
+                    <option value="4">车辆有重大事故，车身骨架受损（含泡水火烧）</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">后续需求</div>
+                <div class="col-sm-8">
+                  买新车&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="1" name="carDemand"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                  买二手车&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="2"  name="carDemand"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                  无购车计划&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="3"  name="carDemand"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div id="thirdstep" style="display: block">
+
+        </div>
+
+        <div id="secondstep" style="display: none">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-7"><h4>只差<font color="#22ac38">1</font>步，多卖<font color="#22ac38">20%</font>，平均<font color="#22ac38">7</font>天成交</h4></div>
+              <div class="col-sm-2"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">验车时间</div>
+              <div class="col-sm-10">
+                &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="carTime" value="1"/>今天上午9：00-12:00&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="carTime" value="2"/>今天下午12:00-18:00&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-10">
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="carTime" value="3"/>明天上午9：00-12:00&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="carTime" value="4"/>明天下午12:00-18:00&nbsp;&nbsp;&nbsp;&nbsp;
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2"></div>
+              <div class="col-sm-10">
+                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="carTime" value="5"/>以上时间均不方便联系，请客服联系我
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-2">验车地址</div>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="carSite"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <center>
+            <button type="button" class="btn btn-primary"  id="firstButton">
+              下一步
+            </button>
+            <button type="button" class="btn btn-primary" style="display: none" id="secondButton" >
+              提交
+            </button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--手机号确认-->
+<div class="pop-box pop-login js-pop-login" id="login_modal2">
+  <form target="guazi_login" action="" method="post">
+    <div class="pop-close" id="closeLogin2"></div>
+    <p class="pop-tit">手机验证后就能帮您安排卖车了哦</p>
+    <ul class="phone-login">
+      <li>
+        <p class="phone-login-tit">手机号码</p>
+        <input name="phone" id="phone_num2" class="phone-login-input js-phoneNum js-phone-input" placeholder="请输入您的手机号码" readonly/>
+      </li>
+      <li>
+        <p class="phone-login-tit"> 验证码</p>
+        <input name="code" id="login_code2" class="phone-login-input phone-login-code js-code" placeholder="请输入验证码" style="width: 232px;"/>
+        <div class="get-code" id="code2">获取验证码</div>
+      </li>
+    </ul>
+    <p class="p-error" id="loginError2"></p>
+    <button class="sub-btn js-checkcode" type="button" id="login_but2">确认卖车</button>
+    <p class="free-phone">免费咨询400-023-1529</p>
+
+  </form>
+</div>
+</body>
+
+<script src="../js/jquery.js"></script>
+<script src="../js/swiper.min.js"></script>
+<script src="../js/sellcar.js"></script>
+<script>
+
+  //轮播图
+    var mySwiper = new Swiper('.swiper-container', {
+        loop: true, // 循环模式选项
+        autoplay: {
+            delay: 2500,//1秒切换一次
+        },
+        freeMode: false
+    })
+
+
+  function confirm(){
+
+      if($("#RegisterPhone").val()==""){
+/*          bootbox.alert({
+              size: "small",
+              title: "提示",
+              message: "请输入手机号!",
+          });
+          location.reload();*/
+        alert("请输入手机号");
+        location.href=location;
+      }
+
+  }
+
+    //点击下一步
+    $("#firstButton").click(function(){
+        document.getElementById("firststep").style.setProperty('display', 'none');
+        document.getElementById("secondstep").style.setProperty('display', 'block');
+        document.getElementById("firstButton").style.setProperty('display', 'none');
+        document.getElementById("secondButton").style.setProperty('display', 'block');
+        var phone=$("#RegisterPhone").val();
+        $("#phonehidden").val(phone);
+    })
+
+    var arr=[
+        [1,"大众",0],
+        [2,"福特",0],
+        [3,"现代",0],
+        [4,"奥迪",0],
+        [5,"丰田",0],
+        [6,"奔驰",0],
+        [10,"捷达",1],
+        [11,"桑塔纳",1],
+        [12,"大众CC",1],
+        [13,"大众Eos",1],
+        [14,"辉腾",1],
+        [15,"甲壳虫",1],
+        [16,"迈腾",1],
+        [17,"爱虎",2],
+        [18,"麦柯斯",2],
+        [19,"瑞界",2],
+        [20,"翼虎",2],
+        [21,"美佳",3],
+        [22,"劳恩斯",3],
+        [23,"悦动",3],
+        [24,"科雅士",3],
+        [25,"索纳塔",3],
+        [26,"维拉克斯",3],
+        [27,"奥迪200",4],
+        [28,"奥迪A5",4],
+        [29,"奥迪A6",4],
+        [30,"奥迪Q7",4],
+        [31,"奥迪S5",4],
+        [32,"奥迪S4",4],
+        [33,"汉兰达",5],
+        [34,"红衫",5],
+        [35,"雅力士",5],
+        [36,"卡罗拉",5],
+        [37,"威驰",5],
+        [38,"奔驰CLK",6],
+        [39,"奔驰CLS",6],
+        [40,"奔驰CL",6],
+        [41,"奔驰GL",6]
+
+    ]
+    $(function(){
+        getType();
+    })
+    //初始化品牌
+    function getType(){
+        var info = '<option value="-1">品牌</option>';
+        for(var i in arr){
+            if(arr[i][2]==0){
+                info += '<option value="'+arr[i][0]+'" >'+arr[i][1]+'</option>';
+            }
+        }
+        document.getElementById("carType").innerHTML=info;
+    }
+
+    //品牌，型号二级联动
+    $("#carType").change(function(){
+        var a=$('#carType').val();//选中的值
+        var inof = '<option value="-1">车系</option>';
+        for(var i in arr){
+            if(arr[i][2] == a){
+                inof+='<option value="'+arr[i][1]+'" >'+arr[i][1]+'</option>';
+            }
+        }
+        document.getElementById("carSeries").innerHTML=inof;
+    })
+
+    //型号改变事件
+    $("#carSeries").change(function(){
+        var typevalue=$("#carType").find("option:selected").text();
+        $("#carTypehidden").val(typevalue);
+    })
+
+    //点击提交
+    $("#secondButton").click(function(){
+        $.ajax({
+            url:'../addSellCar',
+            type:'post',
+            data:$("#sellCarForm").serialize(),
+            success:function(data){
+                $("#useridhidden").val(data);
+                var phones=$("#RegisterPhone").val();
+                $("#phone_num2").val(phones);
+                $('#login_modal2').slideDown('fast')
+            }
+        })
+    })
+
+</script>
+</html>

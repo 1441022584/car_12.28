@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.car.mapper.HomeMapper" >
+
+
+    <!--新增用户手机号  注册 value 传过来的string手机号-->
+    <insert id="addUserPhone" parameterType="com.jk.car.model.UserBean">
+        insert into t_user(username,phone,status) values (#{value},#{value},1)
+    </insert>
+
+    <!--查询当前手机号是否存在用户表-->
+    <select id="queryUserPhoneByphone" resultType="com.jk.car.model.UserBean">
+        select t.id,t.username,t.phone from t_user t where t.phone=#{value}
+    </select>
+
+    <!--保存预约卖车用户手机号-->
+    <insert id="addMakerUserPhone" useGeneratedKeys="true" keyProperty="id" parameterType="com.jk.car.model.UserBean">
+        insert into t_user(username,phone,status) values (#{username},#{phone},1)
+    </insert>
+
+    <!--保存预约卖车信息-->
+    <insert id="saveMakeCar" parameterType="com.jk.car.model.CarBean">
+        insert into t_car(
+            car_Type,car_series,car_Vehiclecondition,car_year_string,car_month_string,mileage,car_Roadroller,car_Site,car_status,user_id
+        )
+            values(
+               #{carType2},#{carSeries},#{carVehiclecondition},#{nian},#{yue},#{mileage},#{carRoadroller},#{carSite},5,#{userId}
+            )
+    </insert>
+
+    <!--查询所有车型  首页展示-->
+    <select id="queryCarHome"  parameterType="com.jk.car.model.CarBean" resultType="com.jk.car.model.CarBean" >
+        select t.id,t.car_type as carType,t.car_Series as carSeries,t.car_Price as carPrice,
+               t.car_VehicleCondition as carVehiclecondition,t.car_Img as carImg,
+               t.car_Details as carDetails,t.car_Site as carSite,t.car_year_string as nian,t.car_month_string as yue
+                  from t_car t where 1=1 and t.car_Status = 2
+                    <if test="carType != null and carType != ''">
+                            and t.car_type like '%${carType}%'
+                    </if>
+
+                    <if test="carBrand == 1 ">
+                        and t.car_type like '%大众%'
+                    </if>
+                    <if test="carBrand == 2 ">
+                        and t.car_type like '%宝马%'
+                    </if>
+                    <if test="carBrand == 3 ">
+                        and t.car_type like '%奔驰%'
+                    </if>
+                    <if test="carBrand == 4 ">
+                        and t.car_type like '%奥迪%'
+                    </if>
+                    <if test="carBrand == 5 ">
+                        and t.car_type like '%别克%'
+                    </if>
+                    <if test="carBrand == 6 ">
+                        and t.car_type like '%丰田%'
+                    </if>
+                    <if test="carBrand == 7 ">
+                        and t.car_type like '%现代%'
+                    </if>
+                    <if test="carBrand == 8 ">
+                        and t.car_type like '%福特%'
+                    </if>
+                    <if test="carBrand == 9 ">
+                        and t.car_type like '%日产%'
+                    </if>
+                    <if test="carBrand == 10 ">
+                        and t.car_type like '%本田%'
+                    </if>
+                    <if test="carBrand == 11 ">
+                        and t.car_type like '%长安%'
+                    </if>
+                    <if test="carBrand == 12 ">
+                        and t.car_type like '%雪佛兰%'
+                    </if>
+                    <if test="carBrand == 13 ">
+                        and t.car_type like '%哈佛%'
+                    </if>
+                    <!--价格  区间查询-->
+                    <if test="carBrand == 333 ">
+                        and t.car_price &lt; 3.0
+                    </if>
+                    <if test="carBrand == 35 ">
+                        and t.car_price &lt;= 5.0 and t.car_price &gt;= 3.0
+                    </if>
+                    <if test="carBrand == 57 ">
+                        and t.car_price &lt;= 7.0 and t.car_price &gt;= 5.0
+                    </if>
+                    <if test="carBrand == 79 ">
+                        and t.car_price &lt;= 9.0 and t.car_price &gt;= 7.0
+                    </if>
+                    <if test="carBrand == 912 ">
+                        and t.car_price &lt;= 12.0 and t.car_price &gt;= 7.0
+                    </if>
+                    <if test="carBrand == 1215 ">
+                        and t.car_price &lt;= 15.0 and t.car_price &gt;= 12.0
+                    </if>
+                    <if test="carBrand == 1620 ">
+                        and t.car_price &lt;= 20 and t.car_price &gt;= 16
+                    </if>
+
+    </select>
+
+    <!--根据当前汽车id查询该商品说的所有信息-->
+    <select id="queryCarInfoByCarId" resultType="com.jk.car.model.CarBean">
+        select
+               t.id,t.car_type as carType,t.car_Series as carSeries,t.car_Price as carPrice,
+                 t.car_VehicleCondition as carVehiclecondition,t.car_Img as carImg,
+                   t.car_Details as carDetails,t.car_Site as carSite,t.car_year_string as nian
+                ,t.car_month_string as yue
+         from t_car t where t.car_Status = 2 and  t.id = #{value}
+    </select>
+
+</mapper>

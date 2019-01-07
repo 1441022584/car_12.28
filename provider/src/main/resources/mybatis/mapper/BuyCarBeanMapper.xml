@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.car.mapper.BuyCarBeanMapper" >
+    <resultMap id="BaseResultMap" type="com.jk.car.model.BuyCarBean" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="car_type" property="cartype" jdbcType="VARCHAR" />
+        <result column="car_series" property="carSeries" jdbcType="VARCHAR" />
+        <result column="car_license_year" property="carLicenseYear" jdbcType="DATE" />
+        <result column="car_license_month" property="carLicenseMonth" jdbcType="DATE" />
+        <result column="car_roadRoller" property="carRoadroller" jdbcType="VARCHAR" />
+        <result column="car_Licencesto" property="carLicencesto" jdbcType="VARCHAR" />
+        <result column="car_vehicleCondition" property="carVehiclecondition" jdbcType="VARCHAR" />
+        <result column="car_demand" property="carDemand" jdbcType="VARCHAR" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" />
+        <result column="car_price" property="carPrice" jdbcType="DOUBLE" />
+        <result column="car_displacement" property="carDisplacement" jdbcType="DOUBLE" />
+        <result column="car_licensePlateNumber" property="carLicenseplatenumber" jdbcType="VARCHAR" />
+        <result column="car_status" property="carStatus" jdbcType="INTEGER" />
+        <result column="car_site" property="carSite" jdbcType="VARCHAR" />
+        <result column="car_parameter" property="carParameter" jdbcType="INTEGER" />
+        <result column="car_img" property="carImg" jdbcType="VARCHAR" />
+        <result column="car_details" property="carDetails" jdbcType="VARCHAR" />
+        <result column="car_time" property="carTime" jdbcType="INTEGER" />
+        <result column="carage" property="carage" jdbcType="INTEGER" />
+        <result column="mileage" property="mileage" jdbcType="INTEGER" />
+        <result column="carpart" property="carpart" jdbcType="INTEGER" />
+        <result column="carshift" property="carshift" jdbcType="INTEGER" />
+        <result column="carseat" property="carseat" jdbcType="INTEGER" />
+        <result column="car_year_string" property="carYearString" jdbcType="VARCHAR" />
+        <result column="car_month_string" property="carMonthString" jdbcType="VARCHAR" />
+    </resultMap>
+  <!--查询买车列表-->
+  <select id="getBuyCarList" parameterType="int" resultMap="BaseResultMap">
+    select * from t_car  where  car_status =2
+    <include refid="queryWhere"></include>
+  </select>
+  <sql id="queryWhere">
+      <if test=" buyCarBean.cartype !=null and buyCarBean.cartype != ''">
+        and car_type like '%${buyCarBean.cartype}%'
+      </if>
+      <if test=" buyCarBean.min !=null and buyCarBean.min != ''">
+        and car_price >#{buyCarBean.min}
+      </if>
+      <if test=" buyCarBean.max !=null and buyCarBean.max != ''">
+         and car_price &lt;#{buyCarBean.max}
+      </if>
+      <if test=" buyCarBean.carage != null and buyCarBean.carage != '' and buyCarBean.carage != -1">
+          and carage = #{buyCarBean.carage}
+      </if>
+      <if test=" buyCarBean.mileage != null and buyCarBean.mileage != -2 ">
+          and mileage = #{buyCarBean.mileage}
+      </if>
+      <if test=" buyCarBean.carpart != null  and buyCarBean.carpart != -3 ">
+          and carpart = #{buyCarBean.carpart}
+      </if>
+      <if test=" buyCarBean.carshift != null  and buyCarBean.carshift != -4 ">
+          and carshift = #{buyCarBean.carshift}
+      </if>
+      <if test=" buyCarBean.carseat != null  and buyCarBean.carseat != -5 ">
+          and carseat = #{buyCarBean.carseat}
+      </if>
+  </sql>
+
+  <!--查询买车总条数-->
+  <select id="getBuyCarListCount" parameterType="int" resultMap="BaseResultMap">
+    select count(*) from t_car  where car_status =2
+  </select>
+  <!--回显地址和id字段-->
+  <select id="getBuyCarListById" parameterType="int" resultMap="BaseResultMap">
+    select * from t_car  where id =#{id}
+  </select>
+
+  <!--买车首页Highchars根据年-->
+  <select id="getBuyCarHighcharsYear" resultType="java.util.LinkedHashMap">
+    select count(1) as 总个数 ,YEAR (car_license_year) as 年 from t_car  group by YEAR (car_license_year)
+  </select>
+
+  <!--根据Id查询买车信息-->
+  <select id="getBuyCarListOne" parameterType="int" resultMap="BaseResultMap">
+    select * from t_car where  id = #{value}
+  </select>
+  <!--总条数-->
+  <select id="queryCountList" resultType="long">
+
+    select count(*) from t_car
+  </select>
+<!--分页查询-->
+  <select id="findUserList" parameterType="map" resultMap="BaseResultMap">
+         select * from t_car  limit #{page},#{rows}
+   </select>
+    <!-- 预约看车提交给管理员审批-->
+
+    <insert id="addBuyCarStatus" parameterType="com.jk.car.model.BuyCarBean" >
+        insert into t_car (car_type, car_series,
+           car_license_month, car_roadRoller,
+          car_Licencesto, car_vehicleCondition, car_demand,
+          user_id, car_price, car_displacement,
+          car_licensePlateNumber, car_status, car_site,
+          car_parameter, car_img, car_details,
+          car_time, carage, mileage,
+          carpart, carshift, carseat,
+          car_year_string, car_month_string)
+        values (#{cartype,jdbcType=VARCHAR}, #{carSeries,jdbcType=VARCHAR},
+           str_to_date(#{carLicenseMonth},"%Y-%m-%d"), #{carRoadroller,jdbcType=VARCHAR},
+          #{carLicencesto,jdbcType=VARCHAR}, #{carVehiclecondition,jdbcType=VARCHAR}, #{carDemand,jdbcType=VARCHAR},
+          #{userId,jdbcType=INTEGER}, #{carPrice,jdbcType=DOUBLE}, #{carDisplacement,jdbcType=DOUBLE},
+          #{carLicenseplatenumber,jdbcType=VARCHAR}, #{carStatus,jdbcType=INTEGER}, #{carSite,jdbcType=VARCHAR},
+          #{carParameter,jdbcType=INTEGER}, #{carImg,jdbcType=VARCHAR}, #{carDetails,jdbcType=VARCHAR},
+          #{carTime,jdbcType=INTEGER}, #{carage,jdbcType=INTEGER}, #{mileage,jdbcType=INTEGER},
+          #{carpart,jdbcType=INTEGER}, #{carshift,jdbcType=INTEGER}, #{carseat,jdbcType=INTEGER},
+          #{carYearString,jdbcType=VARCHAR}, #{carMonthString,jdbcType=VARCHAR})
+  </insert>
+  <!--大数据往数据库新增-->
+  <insert id="insertMany" parameterType="list">
+    insert into t_car (car_type)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.cartype})
+    </foreach>
+  </insert>
+</mapper>

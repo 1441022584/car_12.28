@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="../jslib/jquery-2.1.1.min.js"></script>
+
+    <script src="../jslib/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+    <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.css">
+<!--
+    <script src="../jslib/bootstrap/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+-->
+    <!--轮播-->
+
+    <link rel="stylesheet" type="text/css" href="lunbo/dist/jquery.vm-carousel.css"/>
+    <script src="lunbo/js/modernizr.js"></script>
+    <script src="lunbo/dist/jquery.vm-carousel.js"></script>
+</head>
+<style  type="text/css">
+    a{
+        text-decoration:none;
+        color:black;
+        font-size:14px;
+    }
+    .btn span {
+        float: left;
+        width: 94px;
+        height: 54px;
+        line-height: 51px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-left: 760px;
+        margin-top: -67px;
+        text-align: center;
+        border-radius: 4px;
+    }
+    .m-bottom .btn .nowBuy {
+        border: 0px  #fe7c04;
+        color:#ffffff;
+        background: #36bb65;
+    }
+    .carType5{
+        margin-left: 331px;
+        margin-top: 170px;
+        font-size:1.4em;
+        height: 58px;
+        width: 539px;
+        border-radius:10px;
+        border:3px solid #ffffff;
+        color: #ff36a4;
+        outline:0;
+        display:block;
+        background-image:red;
+    }
+
+    .btn2 span {
+        float: left;
+        width: 88px;
+        height: 48px;
+        line-height: 49px;
+
+        font-size: 19px;
+        text-align: center;
+        border-radius: 4px;
+        margin-left: 240px;
+        margin-top: -50px;
+    }
+    .m-bottom2 .btn2 .nowBuy2 {
+        border: 0px  #fe7c04;
+        color:#ffffff;
+        background: #009933;
+    }
+    #input2{
+        font-size: 16px;
+        height: 54px;
+        width: 280px;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        color: #ff4775;
+        outline: 0;
+        margin-left: -51px;
+        margin-top: -7px;
+        display: block;
+        background-image: red;
+    }
+    .btn3 span {
+        float: left;
+        width: 212px;
+        height: 55px;
+        line-height: 52px;
+        /*font-weight: bold;*/
+        font-size: 19px;
+        text-align: center;
+        border-radius: 4px;
+        margin-left: -48px;
+        margin-top: 39px;
+    }
+    .m-bottom3 .btn3 .nowBuy3 {
+        border: 0px  #fe7c04;
+        color:#ffffff;
+        background: #88aab1;
+        border: 1px solid #88aab1;
+    }
+
+
+    #M-box{
+        height:880px;
+        width: 1355px;
+        background:url(../img/head.png)
+    }
+    #index-title {
+        background:url(../img/sun.png);
+        background-size:137px 143px;
+        margin-left:915px;
+        margin-top:-123px;
+        height:130px;
+        width: 130px;
+    }
+    .header {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 8;
+        margin-left: -600px;
+        border-bottom: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+    #guazi {
+        background:url(../img/guazi.png);
+        background-size:70px 70px;
+        margin-left: 40px;
+    }
+    #ziti{
+        margin-left: 400px;
+        margin-top: 20px;
+    }
+    #sousuo2{
+        background:url(./img/sousuo2.png);
+        margin-left: 328px;
+        margin-top: 38px;
+    }
+    #maiche{
+        border:3px solid #f5f5f500;
+        margin-left: 90px;
+        margin-top: -34px;
+        background: #f5f5f500;
+    }
+    #left{
+        margin-top:32px;
+    }
+    #left2{
+        margin-top:32px;
+    }
+    #left3{
+        margin-top:32px;
+    }
+
+    #left a:hover{
+        color:#2aabd2;
+        background-color: #f36690
+    }
+
+    #left a:visited{
+        color: #8a77d2;
+        background-color:#2aabd2;
+        border:#ddd 3px solid;
+    }
+    #left2 a:hover{
+        color:#2aabd2;
+        background-color: #f36690
+    }
+
+    #left2 a:visited{
+        color: #8a77d2;
+        background-color:#2aabd2;
+        border:#ddd 3px solid;
+    }
+    #left3 a:hover{
+        color:#2aabd2;
+        background-color: #f36690
+    }
+
+    #left3 a:visited{
+        color: #8a77d2;
+        background-color:#2aabd2;
+        border:#ddd 3px solid;
+    }
+    #maiche2 {
+        font-size: 22px;
+        color: #181818;
+        letter-spacing: 0.55px;
+        line-height: 28px;
+        font-weight: 700;
+        margin-left: 0px;
+        margin-top: 0px;
+        margin:0 auto;
+        border-radius: 2px;
+        background: #d8ebf0;
+    }
+    #maiche3{
+        margin-top: -207px;
+    }
+    #maiche4 {
+        font-size: 22px;
+        color: #181818;
+        letter-spacing: 0.55px;
+        line-height: 28px;
+        font-weight: 700;
+        margin-left: 0px;
+        margin-top: 0px;
+
+    }
+    #right{
+        margin-left: 54px;
+        margin-top: 37px;
+    }
+
+    .goodslayout{
+        width: 100%;
+        height:99%;
+
+    }
+    .gnav{
+        width: 100%;
+        height:70px;
+    }
+    .gbody{
+        width: 100%;
+        height:90%;
+    }
+    .ginfo{
+        float: left;
+        margin-left: 75px;
+        margin-top: 90px;
+    }
+
+    #lunbo{
+        float: left;
+        width: 1250px;
+        height: 50px;
+        margin-left: 31px;
+    }
+    #lunbo2{
+        margin-left: -214px;
+    }
+    h2 {
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+    .vmc-centered{ padding: 10px 0; }
+    .vmc-centered img { transition: all 0.3s ease; }
+    .vmc-centered .vmc_active img { transform: scale(1.2); }
+    #remai{
+        background-color: #00cc99;
+        width: 600px;
+        height: 20px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    #myModal{
+        margin-top: 150px;
+    }
+    #myModal2{
+        margin-top: 150px;
+    }
+    #loginFont{
+        margin-left: 632px;
+        margin-top: -19px;
+    }
+</style>
+<body>
+
+<div  style="width:1381px;height:285px;background:url(./img/head.png);float:left">
+    <!--导航条-->
+    <div  style="width:1320px;height:70px;float:left">
+        <!--瓜子-->
+        <div  style="width:70px;height:70px;float:left" id="guazi"></div>
+
+
+
+        <div id="ziti">
+            <font color="#f0ffff">
+                <a href="../toUser">首页</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+                <a href="../toBuyCar">我要买车</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+                <a href="../toSellCarPage">我要卖车</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+                <a href="../toServicePage">瓜子服务</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+                <a href="../toLoans">瓜子金融</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+                <a href="javascript:;">毛豆新车</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+               热线电话 400-023-1529&thinsp; <div id="loginFont">登录</div>
+            </font>
+        </div>
+
+
+    </div>
+    <!--搜索-->
+    <div id="sousuo2" style="width:542px;height:41px;float:left">
+    </div>
+
+    <input type="text" id="carType" class="carType5"  placeholder="请输入关键字"/>
+    <div class="m-bottom">
+        <div class="btn">
+            <a href="javascript:queryCarHome()"><span class="nowBuy" id="nowBuy">搜索</span></a>
+        </div>
+        <!--孙红雷-->
+        <div style="width:130px;height:130px;float:left" id="index-title"></div>
+    </div>
+
+</div>
+<!--我要买车-->
+<div  id="maiche" style="width:1194px;height:255px;float:left">
+    <div id="maiche2">
+        <a href="/bj/buy/" class="fl" data-gzlog="tracking_type=click&amp;eventid=92780751">我要买车 ▶</a>
+    </div>
+    <div id="left">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="JavaScript:queryCarHome('1')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=dazhong">
+            <img src="./car_Img/dazhong.png" width="30px" height="30px"/>大众</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome(2)" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=bmw">
+            <img src="./car_Img/bmw.png" width="30px" height="30px"/>宝马</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome(3)" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=benz">
+            <img src="./car_Img/benz.png" width="30px" height="30px"/>奔驰</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome(4)" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=audi">
+            <img src="./car_Img/audi.png" width="30px" height="30px"/>奥迪</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome(5)" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=buick">
+            <img src="./car_Img/buick.png" width="30px" height="30px"/>别克</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('6')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=toyota">
+            <img src="./car_Img/toyota.png"  width="30px" height="30px"/>丰田</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('7')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=hyundai">
+            <img src="./car_Img/hyundai.png" width="30px" height="30px"/>现代</a>
+    </div>
+
+    <div id="left2">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="JavaScript:queryCarHome('8')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=ford">
+            <img src="./car_Img/ford.png"  width="30px" height="30px"/>福特</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('9')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=richan">
+            <img src="./car_Img/richan.png"  width="30px" height="30px"/>日产</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('10')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=honda">
+            <img src="./car_Img/honda.png" width="30px" height="30px"/>本田</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('11')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=changan">
+            <img src="./car_Img/changan.png" width="30px" height="30px"/>长安</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('12')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=chevrolet">
+            <img src="./car_Img/chevrolet.png" width="30px" height="30px"/>雪佛兰</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('13')" data-gzlog="tracking_type=click&amp;eventid=0050080000000024&amp;brand=hafu">
+            <img src="./car_Img/hafu.png"  width="30px" height="30px"/>哈弗</a>&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome()" class="icon-buycar-more all-brand-hover" data-gzlog="tracking_type=click&amp;eventid=92814655">全部品牌</a>
+    </div>
+    <div id="left3">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="JavaScript:queryCarHome(333)" data-gzlog="tracking_type=click&amp;&amp;&amp;eventid=0050100000000026&amp;&amp;&amp;price_index=11">3万以下</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('35')" data-gzlog="tracking_type=click&amp;eventid=0050100000000026&amp;price_index=12">3-5万</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('57')" data-gzlog="tracking_type=click&amp;eventid=0050100000000026&amp;price_index=13">5-7万</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('79')" data-gzlog="tracking_type=click&amp;eventid=0050100000000026&amp;&amp;price_index=14">7-9万</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('912')" data-gzlog="tracking_type=click&amp;eventid=0050100000000026&amp;&amp;price_index=15">9-12万</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome('1215')" data-gzlog="tracking_type=click&amp;eventid=0050100000000026&amp;price_index=16">12-16万</a>&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;
+        <a href="JavaScript:queryCarHome(1620)" data-gzlog="tracking_type=click&amp;eventid=0050100000000026&amp;price_index=17">16-20万</a>
+    </div>
+    <!--我要卖车-->
+    <div  id="maiche3" style="width:450px;height:255px;float:right">
+        <div id="maiche4">
+            <a href="/bj/buy/" class="fl" data-gzlog="tracking_type=click&amp;eventid=92780751">我要卖车 ▶</a>
+        </div>
+        <!--预约买车-->
+        <div id="right">
+            <input type="text" name="input2" id="input2" class="form_input" placeholder="请输入手机号"/>
+            <div class="m-bottom2">
+                <div class="btn2">
+                    <a href="javascript:openModal()"><span class="nowBuy2" id="nowBuy2">预约卖车</span></a>
+                </div>
+            </div>
+            <!--爱车估价  爆卖服务-->
+            <div class="m-bottom3">
+                <div class="btn3">
+                    <a href="javascript:saveGoods()"><span class="nowBuy3" id="nowBuy3">爱车估价</span></a>
+                     <a href="javascript:saveGoods()"><span class="nowBuy3" id="nowBu3">保卖服务</span></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <!--轮播图-->
+    <div id="lunbo">
+        <div class="vmcarousel-centered-infitine vmc-centered">
+            <li><a href="#"><img src="../car_img/qn181227200452df5d498ed1e9137ff44dc12e663db274.png" alt="" width="200"/><div id="lunbo2">三厢轿车 <br/><font color="#006400"><b>30万起</b></font></div></a></li>
+            <li><a href="#"><img src="../car_img/qn181227200452df5d498ed1e9137ff44dc12e663db274.png" alt="" width="200"/><div id="lunbo2">三厢轿车 <br/><font color="#006400"><b>30万起</b></font></div></a></li>
+            <li><a href="#"><img src="../car_img/qn181227200452df5d498ed1e9137ff44dc12e663db274.png" alt="" width="200"/><div id="lunbo2">三厢轿车 <br/><font color="#006400"><b>30万起</b></font></div></a></li>
+            <li><a href="#"><img src="../car_img/qn181227200452df5d498ed1e9137ff44dc12e663db274.png" alt="" width="200"/><div id="lunbo2">三厢轿车 <br/><font color="#006400"><b>30万起</b></font></div></a></li>
+            <li><a href="#"><img src="../car_img/qn181227200452df5d498ed1e9137ff44dc12e663db274.png" alt="" width="200"/><div id="lunbo2">三厢轿车 <br/><font color="#006400"><b>30万起</b></font></div></a></li>
+            <li><a href="#"><img src="../car_img/qn181227200452df5d498ed1e9137ff44dc12e663db274.png" alt="" width="200"/><div id="lunbo2">三厢轿车 <br/><font color="#006400"><b>3.0万起</b></font></div></a></li>
+        </div>
+    </div><br/>
+<!--热卖车型-->
+<div id="remai">热卖车型 </div>
+<!--首页展示车-->
+<div id="data_div"></div>
+<div class="goodslayout">
+    <div class="gbody" id="gbody"></div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <form id="sellCarForm">
+                    <div id="firststep" >
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-7"><h4>只差<font color="#22ac38">2</font>步，多卖<font color="#22ac38">20%</font>，平均<font color="#22ac38">7</font>天成交</h4></div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">售卖车型</div>
+                                <div class="col-sm-8">
+                                    <input type="hidden" name="userPhone" id="userphone"/>
+                                    <input  name="carType2" class="form-control"  id="carTypehidden"/>
+<!--                                    <select class="form-control"  placeholder="品牌" id="carType">
+                                    </select>-->
+                                </div>
+                                <div class="col-sm-4">
+<!--                                  <select name="carSeries" class="form-control"   placeholder="车系" id="carSeries">
+
+                                    </select>-->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">上牌时间</div>
+                                <div class="col-sm-4">
+                                    <select name="nian" class="form-control" >
+                                        <option value="2019">2019年</option>
+                                        <option value="2018">2018年</option>
+                                        <option value="2017">2017年</option>
+                                        <option value="2016">2016年</option>
+                                        <option value="2015">2015年</option>
+                                        <option value="2014">2014年</option>
+                                        <option value="2013">2013年</option>
+                                        <option value="2012">2012年</option>
+                                        <option value="2011">2011年</option>
+                                        <option value="2010">2010年</option>
+                                        <option value="2009">2009年</option>
+                                        <option value="2008">2008年</option>
+                                        <option value="2007">2007年</option>
+                                        <option value="2006">2006年</option>
+                                        <option value="2005">2005年</option>
+                                        <option value="2004">2004年</option>
+                                        <option value="2003">2003年</option>
+                                        <option value="2002">2002年</option>
+                                        <option value="2001">2001年</option>
+                                        <option value="2000">2000年</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select name="yue" class="form-control" >
+                                        <option value="1">1月</option>
+                                        <option value="2">2月</option>
+                                        <option value="3">3月</option>
+                                        <option value="4">4月</option>
+                                        <option value="5">5月</option>
+                                        <option value="6">6月</option>
+                                        <option value="7">7月</option>
+                                        <option value="8">8月</option>
+                                        <option value="9">9月</option>
+                                        <option value="10">10月</option>
+                                        <option value="11">11月</option>
+                                        <option value="12">12月</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">行驶里程(万公里)</div>
+                                <div class="col-xs-8">
+                                    <select name="mileage" class="form-control" >
+                                        <option value="1">0-5万公里</option>
+                                        <option value="2">5-10万公里</option>
+                                        <option value="3">10-15万公里</option>
+                                        <option value="4">20万公里以上</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">牌照地</div>
+                                <div class="col-sm-8">
+                                    <select name="carRoadroller" class="form-control">
+                                        <option value="北京">北京</option>
+                                        <option value="上海">上海</option>
+                                        <option value="山西">山西</option>
+                                        <option value="陕西">陕西</option>
+                                        <option value="河南">河南</option>
+                                        <option value="四川">四川</option>
+                                        <option value="云南">云南</option>
+                                        <option value="内蒙古">内蒙古</option>
+                                        <option value="河北">河北</option>
+                                        <option value="黑龙江">黑龙江</option>
+                                        <option value="安徽">安徽</option>
+                                        <option value="山东">山东</option>
+                                        <option value="广州">广州</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">车况</div>
+                                <div class="col-sm-8">
+                                    <select name="carVehiclecondition" class="form-control" >
+                                        <option value="99成新">99成新</option>
+                                        <option value="9成新">9成新</option>
+                                        <option value="85成新">85成新</option>
+                                        <option value="7成新">7成新</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">后续需求</div>
+                                <div id="xuqiu" class="col-sm-8">
+                                    买新车<input type="radio" value="1" name="xuqiu"/>
+                                    买二手车<input type="radio" value="2"  name="xuqiu"/>
+                                    无购车计划&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="3"  name="xuqiu"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div id="thirdstep" style="display: block">
+
+                </div>
+                <!--下一步-->
+                <div id="secondstep" style="display: none">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-7"><h4>只差<font color="#22ac38">1</font>步，多卖<font color="#22ac38">20%</font>，平均<font color="#22ac38">7</font>天成交</h4></div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">验车时间</div>
+                            <div class="col-sm-10">
+                                &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="carTime" value="1"/>今天上午9：00-12:00&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="carTime" value="2"/>今天下午12:00-18:00&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="carTime" value="3"/>明天上午9：00-12:00&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp; <input type="radio" name="carTime" value="4"/>明天下午12:00-18:00&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input id="carTime" type="radio" name="carTime" value="5"/>以上时间均不方便联系，请客服联系我
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2">验车地址</div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="carSite"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!--提交-->
+                    <div id="sub" style="display: none">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-7"><h4>手机验证后就可以帮您安排卖车了哦</h4></div>
+                                <div class="col-sm-2"></div>
+                            </div><br/>
+                            <div class="row">
+                                <div class="col-sm-2">手机号</div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="userphone2"/>
+                                </div>
+                            </div>
+<br/>
+                            <div class="row">
+                                <div class="col-sm-2">验证码</div>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="carSite" id="login_code"/>
+                                </div>
+                                <div class="col-sm-2"><button type="button" onclick="getCode()" class="btn btn-success">获取验证码</button></div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <center><font size="3px" color="#008b8b">免费咨询400-069-6530</font><br/>
+
+                                登录即视为同意《用户使用协议》及《隐私权条款》</center>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" class="btn btn-primary"  id="firstButton">
+                            下一步
+                        </button>
+                        <button type="button" class="btn btn-primary" style="display: none" id="secondButton" >
+                            提交
+                        </button>
+
+                        <button type="button" onclick="queren()" class="btn btn-primary" style="display: none" id="queren" >
+                            确认卖车
+                        </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--短信登录弹框-->
+<div class="modal fade" id="myModal2" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <form id="loginForm">
+                    <!--提交-->
+                    <div id="tijiao" style="display: block">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-7"><h4>瓜子二手车直卖网</h4></div>
+                                <div class="col-sm-2"></div>
+                            </div><br/>
+                            <div class="row">
+                                <div class="col-sm-2">手机号</div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="userphone3"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-sm-2">验证码</div>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" id="code32" name="carSite"/>
+                                </div>
+                                <div class="col-sm-2"><button type="button" onclick="getCode32()" class="btn btn-success">获取验证码</button></div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <center><font size="3px" color="#008b8b">免费咨询400-069-6530</font><br/>
+
+                                    登录即视为同意《用户使用协议》及《隐私权条款》</center>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+                <div class="modal-footer">
+                    <center>
+                        <button type="button" onclick="loginsa()" class="btn btn-primary" style="display: block" id="logins" >
+                            登录
+                        </button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+
+
+  function getCode32(){
+
+      var  phone = $("#userphone3").val();
+
+      if(phone == '' || phone == null){
+          bootbox.alert({
+              size: "small",
+              title: "提示",
+              message: "请输入手机号!",
+          });
+          return ;
+      }
+      $.ajax({
+          url: '../getCode',
+          type: 'post',
+          data: {
+              phone_number: phone
+          },
+          success: function (data) {
+              console.log(data)
+          },
+          error: function (data) {
+              console.log(data)
+          }
+      })
+  }
+
+
+  function loginsa(){
+
+      var  phone = $("#userphone3").val();
+
+      var  code32 = $("#code32").val();
+
+      if (!phone) {
+          bootbox.alert({
+              size: "small",
+              title: "提示",
+              message: "请输入手机号!",
+          });
+          return
+      }
+      if (!code32) {
+          bootbox.alert({
+              size: "small",
+              title: "提示",
+              message: "请输入验证码!",
+          });
+          return
+      }
+      // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+      $.ajax({
+          url: '../homeLogin',
+          type: 'post',
+          data: {
+              login_code: code32,
+              phone_number:phone
+
+          },
+          dataType: 'json',
+          success: function (data) {
+              if (data){
+                  bootbox.alert({
+                      size: "small",
+                      title: "提示",
+                      message: "登录成功!",
+                  });
+              } else{
+                  bootbox.alert({
+                      size: "small",
+                      title: "提示",
+                      message: "验证码错误!",
+                  });
+              }
+          },
+          error: function (data) {
+          }
+      })
+  }
+
+
+
+
+
+
+
+
+
+
+    //打开模态框
+    function openModal(){
+       var  phone = $("#input2").val();
+       if(phone == null || phone== "" || phone.length != 11){
+           $("#input2").val('请输入正确手机号!');
+           return;
+       }
+        $("#userphone").val(phone);
+        $("#userphone2").val(phone);
+        $("#myModal").modal("show");
+    }
+    //页面加载查询车辆
+    $(function(){
+        queryCarHome(0);
+    })
+
+
+    // 获取验证码
+    function getCode(){
+
+        var phone = $("#userphone2").val();
+
+        if(phone == '' || phone == null){
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return ;
+        }
+        $.ajax({
+            url: '../getCode',
+            type: 'post',
+            data: {
+                phone_number: phone
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    }
+
+    // 点击确认卖车
+    function  queren() {
+        var phone_number = $('#userphone2').val() // 获取手机号
+        var login_code = $('#login_code').val() // 获取验证码
+        if (!phone_number) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return
+        }
+        if (!login_code) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入验证码!",
+            });
+            return
+        }
+        // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+        $.ajax({
+            url: '../login',
+            type: 'post',
+            data: {
+                login_code: login_code,
+                phone_number:phone_number
+
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data){
+                    $.post("../saveMakeCar",$("#sellCarForm").serialize(),function() {
+                        bootbox.alert({
+                            size: "small",
+                            title: "提示",
+                            message: "预约卖车成功!我们会在2-3个工作日与您联系,请保持手机通畅!!",
+                        });
+                    })
+                } else{
+                    bootbox.alert({
+                        size: "small",
+                        title: "提示",
+                        message: "验证码错误!",
+                    });
+                }
+            },
+            error: function (data) {
+            }
+        })
+    }
+
+
+
+    //查询车辆-
+    function queryCarHome(carBrand) {
+        //carType车名字  carBrand品牌查询
+        //alert(carBrand);
+        var carType = $("#carType").val();
+        $.ajax({
+            url: "../queryCarHome",
+            type: "POST",
+            async: true,
+            data:{
+                carType:carType,
+                carBrand:carBrand
+            },
+            dataType: 'json',
+            success: function (data) {
+                var html = "";
+                for (var i in data) {
+                    html += '<div class="ginfo">' +
+                        '<img width="250px" height="230px" src="' + data[i].carImg + '" onclick="toLooKCarInfo(' + data[i].id + ')" /><br/>' +
+                        '<font color="red" size="4px">' + data[i].carPrice + '&thinsp;&thinsp;万</font><br/>' + '<font color="#a9a9a9" size="2px">' + data[i].nian + '&thinsp;&thinsp;|&thinsp;&thinsp;' + data[i].carVehiclecondition + '</font><br/>' +
+                        '<div id="carType"><a>' + data[i].carType + '</a></div>' +
+                        '</div>'
+                }
+                $("#gbody").html(html);
+            }
+        });
+    }
+    //登录弹框
+    $("#loginFont").click(function(){
+        $("#myModal2").modal("show");
+    })
+
+    //跳转到汽车详情页面
+    function toLooKCarInfo(id){
+        location.href = "../queryCarInfoByCarId?id="+id;
+    }
+    //车图轮播图
+    jQuery(function($){
+        $('.vmcarousel-centered').vmcarousel({
+            centered: true,
+            start_item: 2,
+            autoplay: false,
+            infinite: false
+        });
+
+        $('.vmcarousel-centered-infitine').vmcarousel({
+            centered: true,
+            start_item: 1,
+            autoplay: false,
+            infinite: true
+        });
+
+        $('.vmcarousel-normal').vmcarousel({
+            centered: false,
+            start_item: 0,
+            autoplay: false,
+            infinite: false
+        });
+    });
+
+    //下一步
+    $("#firstButton").click(function(){
+        document.getElementById("firststep").style.setProperty('display', 'none');
+        document.getElementById("secondstep").style.setProperty('display', 'block');
+        document.getElementById("firstButton").style.setProperty('display', 'none');
+        document.getElementById("secondButton").style.setProperty('display', 'block');
+    })
+    //提交
+    $("#secondButton").click(function(){
+        document.getElementById("firststep").style.setProperty('display', 'none');
+        document.getElementById("secondstep").style.setProperty('display', 'none');
+        document.getElementById("firstButton").style.setProperty('display', 'none');
+        document.getElementById("secondButton").style.setProperty('display', 'none');
+        document.getElementById("queren").style.setProperty('display', 'block');
+        document.getElementById("sub").style.setProperty('display', 'block');
+    })
+
+    //车牌二级联动
+    var arr=[
+        [1,"大众",0],
+        [2,"福特",0],
+        [3,"现代",0],
+        [4,"奥迪",0],
+        [5,"丰田",0],
+        [6,"奔驰",0],
+        [7,"宝马",0],
+        [8,"北京",0],
+        [9,"长城",0],
+        [10,"捷达",1],
+        [11,"桑塔纳",1],
+        [12,"大众CC",1],
+        [13,"大众Eos",1],
+        [14,"辉腾",1],
+        [15,"甲壳虫",1],
+        [16,"迈腾",1],
+        [17,"爱虎",2],
+        [18,"翼虎",2]
+    ]
+/*    $(function(){
+        getType();
+    })
+    function getType(){
+        var info = '<option value="-1">品牌</option>';
+        for(var i in arr){
+            if(arr[i][2]==0){
+                info += '<option value="'+arr[i][0]+'" >'+arr[i][1]+'</option>';
+            }
+        }
+        document.getElementById("carType").innerHTML=info;
+    }
+
+    $("#carType").change(function(){
+        var a=$('#carType').val();//选中的值
+        var inof = '<option value="-1">车系</option>';
+        for(var i in arr){
+            if(arr[i][2] == a){
+                inof+='<option value="'+arr[i][1]+'" >'+arr[i][1]+'</option>';
+            }
+        }
+        document.getElementById("carSeries").innerHTML=inof;
+    })*/
+</script>
+</html>

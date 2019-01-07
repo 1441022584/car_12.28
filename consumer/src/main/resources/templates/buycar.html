@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script  type="text/javascript" src="../jslib/jquery-2.1.1.min.js"></script>
+
+
+
+
+    <script src="../jslib/bootstrap/bootstrap-bootbox/bootbox.js"></script>
+    <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.js"></script>
+    <script src="../jslib/bootstrap/bootstrap3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap3/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap-treeview/bootstrap-treeview.min.css"/>
+    <script src="../jslib/bootstrap/bootstrap-treeview/bootstrap-treeview.min.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootStrap-addTabs/bootstrap.addtabs.css"/>
+    <script src="../jslib/bootstrap/bootStrap-addTabs/bootstrap.addtabs.min.js"></script>
+    <link rel="stylesheet" href="../jslib/bootstrap/bootstrap-table/bootstrap-table.css" />
+    <script src="../jslib/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../jslib/bootstrap/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <link rel="stylesheet" href="../jslib/js/style.css" />
+    <script type="text/javascript" src="../jslib/highcharts/code/highcharts.js"></script>
+    <script type="text/javascript" src="../jslib/highcharts/code/modules/series-label.js"></script>
+    <script  type="text/javascript" src="../jslib/highcharts/code/modules/exporting.js"></script>
+    <script  type="text/javascript" src="../jslib/highcharts/code/modules/export-data.js"></script>
+</head>
+<style type="text/css">
+    .select{
+         padding:5px 10px;
+         border:#ddd 1px solid;
+         border-radius:4px;
+         -webkit-transform:translateY(-22%);
+         width:98%;
+         margin:5% auto;
+         font-size:14px
+     }
+    .select li{
+        list-style:none;
+        padding:10px 0 5px 100px
+    }
+    .select .select-list{
+        border-bottom:#eee 1px dashed
+    }
+    .select dl{
+        zoom:1;position:relative;
+        line-height:24px;
+    }
+    .select dl:after{
+        content:" ";
+        display:block;
+        clear:both;
+        height:0;
+        overflow:hidden
+    }
+    .select dt{
+        width:100px;
+        margin-bottom:5px;
+        position:absolute;
+        top:0;
+        left:-100px;
+        text-align:right;
+        color:#666;
+        height:24px;
+        line-height:24px
+    }
+    .select dd{
+        float:left;
+        display:inline;
+        margin:0 0 5px 5px
+    }
+    .select a{
+        display:inline-block;
+        white-space:nowrap;
+        height:24px;
+        padding:0 10px;
+        text-decoration:none;
+        color:#333;
+        border-radius:2px
+    }
+    .select a:hover{
+        color:#0f0f0f;
+        background-color:#f3edc2
+    }
+    .select .selected a{
+        color:#fff;
+        background-color:#2aabd2
+    }
+    .select-result dt{
+        font-weight:bold
+    }
+    .select-no{
+        color:#999
+    }
+    .select .select-result a{
+        padding-right:20px;
+        background:#2aabd2 url("close.gif") right 9px no-repeat
+    }
+    .select .select-result a:hover{
+        background-position:right -15px
+    }
+    .screen{
+        margin-left: 350.2px;
+        margin-top: -102px;
+        transform:translateY(-60%);/**上移元素**/
+        -ms-transform:translateY(-60%);
+        -webkit-transform:translateY(-314%);
+    }
+    #carousel{
+        margin-left: 21.2px;
+        margin-top: -7px;
+    }
+    #imgTop{
+        margin-left: 24px;
+        margin-top: -25px;
+    }
+    #container {
+        min-width: 310px;
+        max-width: 800px;
+        height: 400px;
+        margin: 0 auto
+    }
+    body {
+        /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #e6e6fa;*/
+        width: 100%;
+        height: 100%;
+    }
+    #wangyao{
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+</style>
+<body>
+    <!-- 导航条 -->
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="../jslib/img/20180912104325.jpg" width="50" height="50" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font>北京</font>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../toUser">  <font size="2">首页</font></a></li>
+                <li><a href="../toBuyCar">  <font size="2">我要买车</font></a></li>
+                <li><a href="../toSellCarPage">  <font size="2">我要卖车</font></a></li>
+                <li><a href="../toServicePage">  <font size="2">瓜子服务</font></a></li>
+                <li><a href="../toLoans">  <font size="2">瓜子金融</font></a></li>
+                <li><a href="../toSellCarPage">  <font size="2">毛豆新车</font></a></li>
+                <li> <a href="#"> <font size="2">400-666-6666</font></a></li>
+                <li><a href="#" id="login"><span class="glyphicon glyphicon-log-in"></span><font size="2"> 登录</font></a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </ul>
+        </div>
+    </nav>
+
+        <div id="imgTop">
+            &nbsp;&nbsp;&nbsp; <img src="../jslib/img/6666.png" width="1330px" height="100px" />
+        </div><br/>
+    <div class="container-responsive" id="wangyao">
+        <div class="row clearfix">
+            <div class="input-group col-xs-9" style="margin-top:0px; positon:relative;float: left">
+                &nbsp;&nbsp;&nbsp;  <a href="#">  <font size="2">瓜子二手车</font></a>-<font size="2">北京二手车</font>
+            </div>
+            <div class="input-group col-xs-2" style="margin-top:0px; positon:relative;float: left">
+                <input type="text" class="form-control" id="carLike" placeholder="搜索你想要的车" />
+                <span class="input-group-btn">
+                    <button class="btn btn-info btn-search" onclick="carLike()">查找</button>
+                </span>
+            </div><br/><br/>
+            <ul class="select">
+                <li class="select-list">
+                    <dl id="select1">
+                        <dt>品牌：</dt>
+                        <dd class="select-all selected"><a href="#" onclick="buyCarType('')">不限</a></dd>
+                        <dd><a href="#" onclick="buyCarType('大众')">大众</a></dd>
+                        <dd><a href="#" onclick="buyCarType('宝马')">宝马</a></dd>
+                        <dd><a href="#" onclick="buyCarType('奔驰')">奔驰</a></dd>
+                        <dd><a href="#" onclick="buyCarType('别克')">别克</a></dd>
+                        <dd><a href="#" onclick="buyCarType('丰田')">丰田</a></dd>
+                        <dd><a href="#" onclick="buyCarType('现代')">现代</a></dd>
+                        <dd><a href="#" onclick="buyCarType('奥迪')">奥迪</a></dd>
+                        <dd><a href="#" onclick="buyCarType('Jeep')">Jeep</a></dd>
+                        <dd><a href="#" onclick="buyCarType('奇瑞')">奇瑞</a></dd>
+                        <dd><a href="#" onclick="buyCarType('吉利')">吉利</a></dd>
+                        <dd><a href="#" onclick="buyCarType('哈佛')">哈佛</a></dd>
+                        <dd><a href="#" onclick="buyCarType('雪佛兰')">雪佛兰</a></dd>
+                        <dd><a href="#" onclick="buyCarType('北汽')">北汽</a></dd>
+                        <dd><a href="#" onclick="buyCarType('比亚迪')">比亚迪</a></dd>
+                        <dd><a href="#" onclick="buyCarType('长安')">长安</a></dd>
+                        <dd><a href="#" onclick="buyCarType('本田')">本田</a></dd>
+                        <dd><a href="#" onclick="buyCarType('马自达')">马自达</a></dd>
+                        <dd><a href="#" onclick="buyCarType('长城')">长城</a></dd>
+                        <dd><a href="#" onclick="buyCarType('华晨')">华晨</a></dd>
+                        <dd><a href="#" onclick="buyCarType('一汽')">一汽</a></dd>
+                        <dd><a href="#" onclick="buyCarType('日产')">日产</a></dd>
+                    </dl>
+                </li>
+                <li class="select-list">
+                    <dl id="select2">
+                        <dt>价格：</dt>
+                        <dd class="select-all selected" onclick="BuyCarPrice('')"><a href="#">不限</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(1,3)">3-6万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(3,6)">3-6万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(6,9)">6-9万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(9,12)">9-12万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(12,15)">12-15万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(15,18)">15-18万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(18,20)">18-20万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(20,25)">20-25万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(25,30)">25-30万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(30,50)">30-50万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(50,80)">50-80万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(80,120)">80-120万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(120,130)">120-130万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(130,150)">130-150万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(150,180)">150-180万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(180,200)">180-200万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(200,220)">200-220万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(220,260)">220-260万</a></dd>
+                        <dd><a href="#" onclick="BuyCarPrice(300,1000)">300-1000万</a></dd>
+                    </dl>
+                </li>
+                <li class="select-result">
+                    <dl>
+                        <dt>已选条件：</dt>
+                        <dd class="select-no">暂时没有选择过滤条件</dd>
+                    </dl>
+                </li>
+            </ul>
+           <div class="screen">
+             <div style="float: left;margin:5px">
+                <select name="" class="form-control" style="width: 90px" onchange="carSelected1(value)">
+                  <option value="-1">车龄</option>
+                  <option value="4">一年内</option>
+                  <option value="1">二年内</option>
+                  <option value="5">三年内</option>
+                  <option value="6">四年内</option>
+                </select>
+            </div>
+             <div style="float: left;margin:5px">
+                <select name="" class="form-control" style="width: 90px" onchange="carSelected2(value)">
+                  <option value="-2">里程</option>
+                  <option value="7">三公里</option>
+                  <option value="8">四公里</option>
+                  <option value="9">五公里</option>
+                </select>
+            </div>
+             <div style="float: left;margin:5px">
+                <select name="" class="form-control" style="width: 90px" onchange="carSelected3(value)">
+                  <option value="-3">车型</option>
+                  <option value="14">svu</option>
+                  <option value="15">跑车</option>
+                  <option value="16">越野</option>
+                  <option value="17">客车</option>
+                </select>
+            </div>
+             <div style="float: left;margin:5px">
+                <select name="" class="form-control" style="width: 90px" onchange="carSelected4(value)">
+                  <option value="-4">变速箱</option>
+                  <option value="2">自动挡</option>
+                  <option value="3">手动挡</option>
+                </select>
+            </div>
+             <div style="float: left;margin:5px">
+                <select name="" class="form-control" style="width: 90px" onchange="carSelected5(value)">
+                  <option value="-5">座位</option>
+                  <option value="10">2座位</option>
+                  <option value="11">4座位</option>
+                  <option value="12">5座位</option>
+                  <option value="13">7座位</option>
+                </select>
+            </div>
+        </div>
+        <!--买车列表-->
+        <div style="margin:15px">
+            <table id="buyCarTable"></table>
+        </div>
+        <div id="container"></div>
+        <div id="carousel" style="width: 1316px">
+            <div id="myCarousel" class="carousel slide">                        <!--设置轮播器区域样式，设置轮播器滚动样式-->
+                <ol class="carousel-indicators">                                <!--设置轮播器列表区域样式，就是小圆点区域样式-->
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>    <!--设置当前列表首选-->
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">                                    <!--设置轮播器图片区域-->
+                    <div class="item active tp1">                                <!--设置轮播器图片样式-->
+                        <a href="#"><img src="../jslib/img/lunbo1.png" style="height: 260px;width: 1316px"  alt="第一张" /></a>
+                    </div>
+                    <div class="item tp2">
+                        <a href="#"><img src="../jslib/img/lunbo1.png" style="height: 260px;width: 1316px"  alt="第二张" /></a>
+                    </div>
+                    <div class="item tp3">
+                        <a href="#"><img src="../jslib/img/lunbo1.png" style="height: 260px;width: 1316px" alt="第三张" /></a>
+                    </div>
+                </div>
+                <!--设置轮播器箭头区域-->
+                <a href="#myCarousel"  data-slide="prev" class="carousel-control left">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a href="#myCarousel" data-slide="next" class="carousel-control right">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+        <!--短信登录弹框-->
+        <div class="modal fade" id="myModal2" role="dialog" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                        <form id="sellCarForm">
+                            <!--提交-->
+                            <div id="sub" style="display: block">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-7"><h4>手机登录后就可以帮您安排看车了哦</h4></div>
+                                        <div class="col-sm-2"></div>
+                                    </div><br/>
+                                    <div class="row">
+                                        <div class="col-sm-2">手机号</div>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="userphone"/>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <div class="col-sm-2">验证码</div>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="carSite" id="buyCarPwd"/>
+                                        </div>
+                                        <div class="col-sm-2"><button type="button" id="code2" onclick="getCode()" class="btn btn-success">获取验证码</button></div>
+                                    </div>
+                                    <br/>
+                                    <div class="row">
+                                        <center><font size="3px" color="#008b8b">免费咨询400-069-6530</font><br/>
+
+                                            登录即视为同意《用户使用协议》及《隐私权条款》</center>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="modal-footer">
+                            <center>
+                                <button type="button" class="btn btn-primary" style="display: block" id="queren" >
+                                    登陆
+                                </button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+    //登录弹框
+    $("#login").click(function(){
+        $("#myModal2").modal("show");
+    })
+
+    // 获取导航栏验证码
+    function getCode(){
+
+        var  phone = $("#userphone").val();
+
+        if(phone == '' || phone == null){
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return ;
+        }
+        document.getElementById("code2").disabled = true;
+        $.ajax({
+            url: '../getCode',
+            type: 'post',
+            data: {
+                phone_number: phone
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    }
+
+    //导航栏登陆
+    $("#queren").click(function(){
+
+        var pwd=$("#buyCarPwd").val();
+        var buyCarphone2=$("#userphone").val();
+
+        if (!buyCarphone2) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入手机号!",
+            });
+            return
+        }
+        if (!pwd) {
+            bootbox.alert({
+                size: "small",
+                title: "提示",
+                message: "请输入验证码!",
+            });
+            return
+        }
+        // 发送ajax 请求 ，字段可以自己定义，接口地址按项目填
+        $.ajax({
+            url: '../buylogin',
+            type: 'post',
+            data: {
+                login_code: pwd,
+                phone:buyCarphone2
+
+            },
+            dataType: 'json',
+            success: function (data) {
+                alert()
+                if (data.code==0) {
+                    $("#myModal2").modal('hide');
+                    $("#login").text(buyCarphone2);
+                }else {
+                    bootbox.alert({
+                        size: "small",
+                        title: "提示",
+                        message: "验证码错误!",
+                    });
+                }
+
+            }
+        })
+    })
+
+    /**
+     * 按年坐线状的hiechars
+     */
+    $(function(){
+        $.ajax({
+            url:"../getBuyCarHighcharsYear",
+            dataType:"json",
+            type:"post",
+            success:function(data){
+                var chart = Highcharts.chart('container',{
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '统计每年买车的数量'
+                    },
+                    subtitle: {
+                        text: '数据来源: www.wangyao.com'
+                    },
+                    xAxis: {
+                        categories: [
+                            '1995-2000年','2001-2005年','2006-2012年','2011-2015年','2016-2022年'
+                        ]
+                    },
+                    //纵坐标
+                    yAxis: {
+                        title: {
+                            //单位
+                            text: '辆 ',
+                            pointFormat: '{series.y}辆: <b>{point.n}年</b>'
+                        },
+                    },
+                    //显示框
+                    tooltip: {
+                        pointFormat: '{series.y}辆: <b>{point.n}年</b>'
+                    },
+                    series: [{
+                        name: '买车数量占比',
+                        colorByPoint: true,
+                        data:data
+                    }]
+                });
+
+            }
+        })
+    })
+    /**
+     * 轮播js
+     */
+    $(function () {
+        $('#myCarousel').carousel({
+            //设置自动播放/3 秒
+            interval: 3000,
+        });
+    });
+    function buyCarType(obj){
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    cartype:obj.toString()
+                }
+        });
+
+    }
+    /**
+     * 查询你想要的车
+     * */
+    function carLike(){
+        var carLike=$('#carLike').val();
+        //alert(carLike)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    cartype:carLike
+                }
+        });
+
+    }
+    function carSelected1(value){
+       // alert(value)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    carage:value
+                }
+        });
+
+    }
+    function carSelected2(value){
+       // alert(value)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    mileage:value
+
+                }
+        });
+
+    }
+    function carSelected3(value){
+        //alert(value)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    carpart:value
+                }
+        });
+
+    }
+    function carSelected4(value){
+        //alert(value)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    carshift:value
+                }
+        });
+
+    }
+    function carSelected5(value){
+       // alert(value)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    carseat:value
+                }
+        });
+
+    }
+    function carSelected(value){
+       // alert(value)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    carage:value,
+                    mileage:value,
+                    carpart:value,
+                    carshift:value,
+                    carseat:value
+                }
+        });
+
+    }
+    function BuyCarPrice(min,max){
+        //alert(min)
+        //alert(max)
+        var options = $('#buyCarTable').bootstrapTable('refresh', {
+            query:
+                {
+                    min:min,
+                    max:max
+                }
+        });
+
+    }
+    $(function(){
+        initMyBuyCarTable();
+    })
+    /**
+     * 买车列表
+     */
+    function initMyBuyCarTable(){
+        //alert(obj);
+        $("#buyCarTable").bootstrapTable({
+            toolbar:'#toolbar',
+            url: '../getBuyCarList',
+            pagination:true, //是否展示分页
+            pageList:[5,10,20,50],//分页组件
+            pageNumber:1,
+            pageSize:5,//默认每页条数
+            //search:true,//是否显示搜索框
+            //searchText:'试试',//初始化搜索文字
+            showColumns:false,//是否显示 内容列下拉框
+            showToggle:false,//是否显示 切换试图（table/card）按钮
+            showPaginationSwitch:false,//是否显示 数据条数选择框
+            showRefresh:false,//是否显示刷新按钮
+            detailView:false,//设置为 true 可以显示详细页面模式。
+            showFooter:false,//是否显示列脚
+           // clickToSelect: true, //是否启用点击选中行
+            sidePagination:'client',//分页方式：client客户端分页，server服务端分页（*
+            striped:true,
+            columns:[
+                {field:'123',formatter:function(value,row,index){
+                    var html="";
+                    html+='&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;&thinsp;<img width="300px" height="230px" src="'+row.carImg+'" onclick="toLooKCarInfo('+row.id+')" />&thinsp;&thinsp;&thinsp;&thinsp;' +
+                          '<img width="300px" height="230px" src="'+row.carImg+'" onclick="toBuyCarInfo('+row.id+')" />&thinsp;&thinsp;&thinsp;&thinsp;' +
+                          '<img width="300px" height="230px" src="'+row.carImg+'" onclick="toBuyCarInfo('+row.id+')" />&thinsp;&thinsp;&thinsp;&thinsp;' +
+                          '<img width="300px" height="230px" src="'+row.carImg+'" onclick="toBuyCarInfo('+row.id+')" />' +
+                          '<br/>'+
+                          '<div id="carType"><font size="4"><center><a>'+row.cartype+'</a></center></font></div>'+
+                         '<center><font color="red" size="4px">'+row.carPrice+'&thinsp;&thinsp;万</font></center>'
+
+                    return html;
+                }}
+            ]
+        });
+    }
+    function toBuyCarInfo(id) {
+        parent.location.href="../getBuyCarListOne?id="+id;
+    }
+
+
+    /**
+     * 条查插件
+     */
+    $(document).ready(function(){
+
+        $("#select1 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("select-all")) {
+                $("#selectA").remove();
+            } else {
+                var copyThisA = $(this).clone();
+                if ($("#selectA").length > 0) {
+                    $("#selectA a").html($(this).text());
+                } else {
+                    $(".select-result dl").append(copyThisA.attr("id", "selectA"));
+                }
+            }
+        });
+
+        $("#select2 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("select-all")) {
+                $("#selectB").remove();
+            } else {
+                var copyThisB = $(this).clone();
+                if ($("#selectB").length > 0) {
+                    $("#selectB a").html($(this).text());
+                } else {
+                    $(".select-result dl").append(copyThisB.attr("id", "selectB"));
+                }
+            }
+        });
+
+        $("#select3 dd").click(function () {
+            $(this).addClass("selected").siblings().removeClass("selected");
+            if ($(this).hasClass("select-all")) {
+                $("#selectC").remove();
+            } else {
+                var copyThisC = $(this).clone();
+                if ($("#selectC").length > 0) {
+                    $("#selectC a").html($(this).text());
+                } else {
+                    $(".select-result dl").append(copyThisC.attr("id", "selectC"));
+                }
+            }
+        });
+
+        $("#selectA").live("click", function () {
+            $(this).remove();
+            $("#select1 .select-all").addClass("selected").siblings().removeClass("selected");
+        });
+
+        $("#selectB").live("click", function () {
+            $(this).remove();
+            $("#select2 .select-all").addClass("selected").siblings().removeClass("selected");
+        });
+
+        $("#selectC").live("click", function () {
+            $(this).remove();
+            $("#select3 .select-all").addClass("selected").siblings().removeClass("selected");
+        });
+
+        $(".select dd").live("click", function () {
+            if ($(".select-result dd").length > 1) {
+                $(".select-no").hide();
+            } else {
+                $(".select-no").show();
+            }
+        });
+
+    });
+</script>
+</html>

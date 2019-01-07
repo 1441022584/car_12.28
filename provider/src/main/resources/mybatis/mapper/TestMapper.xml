@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.car.mapper.TestMapper" >
+
+    <!--参数列表添加-->
+    <insert id="addParamsTable" parameterType="com.jk.car.model.ParamsBean" useGeneratedKeys="true" keyProperty="id">
+        insert into t_params(name,codetype,codeid)
+        values(#{name},#{codetype},#{codeid})
+    </insert>
+
+    <!--添加用户-->
+    <insert id="addUserBean" parameterType="com.jk.car.model.UserBean" useGeneratedKeys="true" keyProperty="id">
+     insert into t_user(phone,ifphoneconfirm,username,status)
+        values(#{phone},#{ifphoneconfirm},#{phone},1)
+    </insert>
+
+    <!-- 添加汽车表-->
+    <insert id="addSellCar" parameterType="com.jk.car.model.ParamsBean">
+        insert into
+        t_car(car_type,car_series,car_year_string,car_month_string,car_roadRoller,car_vehicleCondition,car_demand,car_status,car_parameter,user_id)
+        values(#{carType},#{carSeries},#{carLicenseYear},#{carLicenseMonth},#{carRoadroller},#{carVehiclecondition},#{carDemand},#{carStatus},#{carParameter},#{userId})
+    </insert>
+
+
+    <!--修改电话号码-->
+    <update id="updatePhone" parameterType="com.jk.car.model.UserBean" >
+        update t_user set phone=#{phone_number},ifphoneconfirm=1 where id=#{id}
+    </update>
+
+   <!-- 根据id查询用户电话-->
+    <select id="queryUserPhone" resultType="java.lang.String">
+        select phone from t_user where id = #{value}
+    </select>
+
+    <select id="queryUserByPhone" resultType="com.jk.car.model.UserBean">
+        select id,phone from t_user where phone=#{phoneNumber}
+    </select>
+
+
+
+
+
+	
+</mapper>
